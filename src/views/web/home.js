@@ -10,18 +10,27 @@ import Menu from "views/web/section/menu";
 import Interior from "views/web/section/interior";
 import Store from "views/web/section/store";
 import Procedure from "views/web/section/procedure";
+import Cost from "views/web/section/cost";
+import Consulting from "views/web/section/consulting";
+import Footer from "views/web/section/footer";
 const Home = () => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     window.addEventListener("scroll", handleScroll);
-  //   }, 10);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-  // const handleScroll = () => {
-  //   console.log(window.scrollY);
-  // };
+  const handleScroll = () => {
+    console.log("scrolling");
+
+    console.log("window.scrollY : ", window.scrollY);
+    // if (window.scrollY > 0) {
+    //   targetRef.current.style.position = "fixed";
+    // }
+  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      window.addEventListener("scroll", handleScroll);
+    }, 100);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="wrapper">
       <Header></Header>
@@ -58,9 +67,10 @@ const Home = () => {
         <Procedure></Procedure>
 
         {/* 신규 가맹비용 안내 */}
-        <section id="cost"></section>
+        <Cost></Cost>
         {/* 가맹상담 신청 */}
-        <section id="consulting"></section>
+        <Consulting></Consulting>
+        <Footer></Footer>
       </main>
     </div>
   );

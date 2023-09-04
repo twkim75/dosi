@@ -52,16 +52,32 @@ const Header = () => {
             >
               브랜드
             </li>
-            <li className="navbar__menu__item" data-link="#menu">
+            <li
+              className="navbar__menu__item"
+              data-link="#menu"
+              onClick={scrollIntoView}
+            >
               메뉴
             </li>
-            <li className="navbar__menu__item" data-link="#interior">
+            <li
+              className="navbar__menu__item"
+              data-link="#interior"
+              onClick={scrollIntoView}
+            >
               인테리어
             </li>
-            <li className="navbar__menu__item" data-link="#store">
+            <li
+              className="navbar__menu__item"
+              data-link="#store"
+              onClick={scrollIntoView}
+            >
               매장안내
             </li>
-            <li className="navbar__menu__item" data-link="#procedure">
+            <li
+              className="navbar__menu__item"
+              data-link="#sorry"
+              onClick={scrollIntoView}
+            >
               창업안내
             </li>
           </ul>

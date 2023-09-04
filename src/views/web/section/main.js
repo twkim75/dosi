@@ -16,7 +16,7 @@ const Main = () => {
     autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    swipe: false,
+    // swipe: false,
   };
   return (
     <section id="main">
