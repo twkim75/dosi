@@ -1,7 +1,7 @@
 import "styles/web.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import Header from "./header";
 import Main from "views/web/section/main";
 import Brand from "views/web/section/brand";
@@ -14,20 +14,13 @@ import Cost from "views/web/section/cost";
 import Consulting from "views/web/section/consulting";
 import Footer from "views/web/section/footer";
 const Home = () => {
-  const handleScroll = () => {
-    console.log("scrolling");
-
+  //   해당 section 이동 이벤트
+  const handleScroll = useCallback((e) => {
     console.log("window.scrollY : ", window.scrollY);
-    // if (window.scrollY > 0) {
-    //   targetRef.current.style.position = "fixed";
-    // }
-  };
+  }, []);
   useEffect(() => {
-    const timer = setInterval(() => {
-      window.addEventListener("scroll", handleScroll);
-    }, 100);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      clearInterval(timer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
