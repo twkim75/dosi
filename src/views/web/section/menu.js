@@ -44,7 +44,7 @@ const Menu = () => {
           <div className="menu__sub">
             <div className="menu__row">
               <div className="menu__item soup">
-                <h3 className="item__title">탕</h3>
+                <h3 className="item__title">SOUP</h3>
                 <Slider {...settings}>
                   <MainItem src={main1}></MainItem>
                   <MainItem src={main2}></MainItem>
@@ -53,7 +53,7 @@ const Menu = () => {
                 </Slider>
               </div>
               <div className="menu__item fried">
-                <h3 className="item__title">튀김 / 치킨</h3>
+                <h3 className="item__title">FRIED</h3>
                 <Slider {...settings}>
                   <MainItem src={main1}></MainItem>
                   <MainItem src={main2}></MainItem>
@@ -64,7 +64,7 @@ const Menu = () => {
             </div>
             <div className="menu__row">
               <div className="menu__item stick">
-                <h3 className="item__title">꼬치류</h3>
+                <h3 className="item__title">STICK</h3>
                 <Slider {...settings}>
                   <MainItem src={main1}></MainItem>
                   <MainItem src={main2}></MainItem>
@@ -73,7 +73,7 @@ const Menu = () => {
                 </Slider>
               </div>
               <div className="menu__item side">
-                <h3 className="item__title">마른안주/사이드</h3>
+                <h3 className="item__title">SIDE</h3>
                 <Slider {...settings}>
                   <MainItem src={main1}></MainItem>
                   <MainItem src={main2}></MainItem>
