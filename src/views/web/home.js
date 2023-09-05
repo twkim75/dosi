@@ -8,6 +8,7 @@ import Brand from "views/web/section/brand";
 import Revenue from "views/web/section/revenue";
 import Menu from "views/web/section/menu";
 import Interior from "views/web/section/interior";
+import Sorry from "views/web/section/sorry";
 import Store from "views/web/section/store";
 import Procedure from "views/web/section/procedure";
 import Cost from "views/web/section/cost";
@@ -46,19 +47,18 @@ const Home = () => {
         </section>
         {/* 브랜드 */}
         <Brand></Brand>
-        {/* 수익성 */}
-        <Revenue></Revenue>
-        {/* 메뉴 */}
-        <Menu></Menu>
         {/* 인테리어 */}
         <Interior></Interior>
+        <Sorry></Sorry>
+        {/* 메뉴 */}
+        <Menu></Menu>
+        {/* 수익성 */}
+        <Revenue></Revenue>
         {/* 매장안내 */}
-
         {/* open예정 */}
         <Store></Store>
         {/* 가맹절차 */}
         <Procedure></Procedure>
-
         {/* 신규 가맹비용 안내 */}
         <Cost></Cost>
         {/* 가맹상담 신청 */}
