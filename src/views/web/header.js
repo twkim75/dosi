@@ -54,17 +54,17 @@ const Header = () => {
             </li>
             <li
               className="navbar__menu__item"
-              data-link="#menu"
-              onClick={scrollIntoView}
-            >
-              메뉴
-            </li>
-            <li
-              className="navbar__menu__item"
               data-link="#interior"
               onClick={scrollIntoView}
             >
               인테리어
+            </li>
+            <li
+              className="navbar__menu__item"
+              data-link="#menu"
+              onClick={scrollIntoView}
+            >
+              메뉴
             </li>
             <li
               className="navbar__menu__item"
@@ -75,7 +75,7 @@ const Header = () => {
             </li>
             <li
               className="navbar__menu__item"
-              data-link="#sorry"
+              data-link="#procedure"
               onClick={scrollIntoView}
             >
               창업안내
