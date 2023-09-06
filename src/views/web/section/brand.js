@@ -1,10 +1,32 @@
 import dummy2 from "assets/dummy/dummy_2.png";
 import dosiLine from "assets/logo_line.png";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Brand = () => {
+  const elementRef = useRef(null);
+  const [scrollActive, setScrollActive] = useState(false);
+  const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting && !scrollActive) return setScrollActive(true);
+
+      const el = document.querySelector(".brand__contents");
+      if (el.classList.contains("active")) return;
+      el.classList.add("active");
+    });
+  };
+
+  useEffect(() => {
+    if (!elementRef.current) return;
+
+    const options = { root: null, threshold: 0.6 };
+    const io = new IntersectionObserver(callback, options);
+    io.observe(elementRef.current);
+    return () => {
+      io.disconnect();
+    };
+  }, []);
   return (
-    <section id="brand">
+    <section id="brand" ref={elementRef}>
       <div className="logo_slider left">
         <div className="slider_item first">
           <img src={dosiLine} width={550} height={50}></img>
@@ -20,7 +42,7 @@ const Brand = () => {
         </div>
       </div>
       <div className="brand__wrapper container">
-        <img className="brand__img active" src={dummy2}></img>
+        <img className="brand__img" src={dummy2}></img>
         <div className="brand__contents">
           <h1 className="contents__title">도시맥주</h1>
           <p className="contents__introduce">

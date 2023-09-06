@@ -44,7 +44,7 @@ section {
 
 #header {
   width: 100%;
-  background-color: #fff;
+  background-color: var(--color-primary);
   position: sticky;
   top: 0;
   left: 0;
@@ -64,8 +64,8 @@ section {
       display: flex;
       align-items: center;
       > img {
-        height: 56px;
-        width: 150px;
+        height: 30px;
+        width: 135px;
       }
     }
     .navbar__contents {
@@ -83,14 +83,16 @@ section {
           font-weight: 600;
           font-stretch: normal;
           line-height: 1;
+          color: #fff;
           &:hover {
-            color: #bd1e31;
+            color: #dbdbdb;
+            // color: #bd1e31;
           }
         }
       }
       .navbar__inquiry_btn {
         border-radius: 8px;
-        background-color: var(--color-primary);
+        background-color: #bd1e31;
         color: white;
         padding: 12px 24px;
         font-size: 14px;
@@ -101,8 +103,8 @@ section {
     .navbar__toggle_btn {
       display: none;
       position: absolute;
-      right: 20px;
-      top: 30px;
+      right: 32px;
+      top: 31px;
       > img {
         width: 20px;
       }
@@ -148,11 +150,13 @@ section {
 }
 // 영상
 #video {
-  background-color: var(--color-primary);
+  background-color: #252420;
+  // background-color: var(--color-primary);
   padding: 100px 0px;
 }
 // 브랜드
 #brand {
+  overflow: hidden;
   .logo_slider {
     position: relative;
     width: 100%;
@@ -197,19 +201,19 @@ section {
       width: 50%;
       object-fit: cover;
       border-radius: 12px;
-      opacity: 0;
-      transition: 600ms ease-in all;
-      transform: translateY(200px);
-      &.active {
-        opacity: 1;
-        transform: translateY(0px);
-      }
     }
     > .brand__contents {
       width: 50%;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      opacity: 0;
+      transition: 600ms ease-in all;
+      transform: translateX(200px);
+      &.active {
+        opacity: 1;
+        transform: translateX(0px);
+      }
 
       > h1 {
         font-size: 64px;
@@ -226,6 +230,169 @@ section {
         color: var(--color-dark-1);
         font-size: 20px;
         border-top: 3px solid var(--color-primary);
+      }
+    }
+  }
+}
+// 인테리어
+#interior {
+  padding: 100px 0px;
+  background-color: #fe8e38;
+  .interior__wrapper {
+    display: flex;
+    .interior__contents {
+      width: 55%;
+      word-break: keep-all;
+      padding-right: 60px;
+      opacity: 0;
+      transition: ease-in all var(--animation-duration);
+      transform: translateY(200px);
+      &.active {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+      .title {
+        color: #fff;
+      }
+      .subtitle {
+        color: #fff;
+      }
+      .subtitle:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .interior__slider_container {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // border-radius: 12px;
+      .slick-slider {
+        // border-radius: 12px;
+        .slick-list {
+          border-radius: 12px;
+        }
+        .slick-arrow {
+          &.slick-next {
+            z-index: 1;
+            right: 8px;
+          }
+          &.slick-prev {
+            z-index: 1;
+            left: 8px;
+          }
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+#sorry {
+  padding: 100px 0px;
+  // background-color: #e9e9e9;
+  background-color: #252420;
+  .container {
+    opacity: 0;
+    transition: ease-in all var(--animation-duration);
+    &.active {
+      opacity: 1;
+    }
+    .title {
+      color: #f2f1f0;
+      margin-bottom: 20px;
+      > strong {
+        color: #c61523;
+        font-weight: 800;
+      }
+    }
+    .subtitle {
+      margin-bottom: 0;
+    }
+  }
+}
+// 메뉴
+#menu {
+  overflow: hidden;
+  // background-color: #bd1e31; 진한거
+  background-color: #ce4126;
+  padding: 100px 0px;
+  .title__wrapper {
+    opacity: 0;
+    transition: ease-in all var(--animation-duration);
+    transform: translateY(-100px);
+    &.active {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  .title,
+  .subtitle {
+    color: #fff;
+  }
+  .menu__wrapper {
+    display: flex;
+    align-items: center;
+    .menu__main {
+      // flex: 0.8;
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      > .menu__item {
+        width: 400px;
+      }
+    }
+    .menu__sub {
+      width: 60%;
+      // flex: 1.2;
+      .menu__row {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 66px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .menu__item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 300px;
+      display: flex;
+      justify-content: center;
+      .item__title {
+        color: #fff;
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 1;
+        position: absolute;
+        top: -38px;
+        left: 8px;
+      }
+      .slider__container {
+        width: 100%;
+        .slick-slider {
+          .slick-list {
+            border-radius: 12px;
+          }
+          .slick-arrow {
+            &.slick-next {
+              z-index: 1;
+              right: 8px;
+            }
+            &.slick-prev {
+              z-index: 1;
+              left: 8px;
+            }
+            &::before {
+              display: none;
+            }
+          }
+        }
       }
     }
   }
@@ -298,117 +465,6 @@ section {
     }
   }
 }
-// 메뉴
-#menu {
-  overflow: hidden;
-  // background-color: #bd1e31; 진한거
-  background-color: #ce4126;
-  padding: 100px 0px;
-  .title,
-  .subtitle {
-    color: #fff;
-  }
-  .menu__wrapper {
-    display: flex;
-    align-items: center;
-    .menu__main {
-      flex: 0.8;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      > .menu__item {
-        width: 400px;
-      }
-    }
-    .menu__sub {
-      flex: 1.2;
-      .menu__row {
-        display: flex;
-        justify-content: space-evenly;
-        margin-bottom: 66px;
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-    .menu__item {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      width: 300px;
-      display: flex;
-      justify-content: center;
-      .item__title {
-        color: #fff;
-        font-size: 42px;
-        font-weight: 800;
-        line-height: 1;
-        position: absolute;
-        top: -38px;
-        left: 8px;
-      }
-      .slick-slider {
-        .slick-arrow {
-          &.slick-next {
-            z-index: 1;
-            right: 8px;
-          }
-          &.slick-prev {
-            z-index: 1;
-            left: 8px;
-          }
-          &::before {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
-// 인테리어
-#interior {
-  padding: 100px 0px;
-  background-color: #fe8e38;
-  .interior__wrapper {
-    display: flex;
-    .interior__contents {
-      width: 55%;
-      word-break: keep-all;
-      padding-right: 60px;
-      .title {
-        color: #fff;
-      }
-      .subtitle {
-        color: #fff;
-      }
-      .subtitle:last-child {
-        margin-bottom: 0;
-      }
-    }
-    .interior__slider_container {
-      width: 45%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      .slick-slider {
-        .slick-arrow {
-          &.slick-next {
-            z-index: 1;
-            right: 8px;
-          }
-          &.slick-prev {
-            z-index: 1;
-            left: 8px;
-          }
-          &::before {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
 // 매장안내
 #store {
   background-color: #e9e9e9;
@@ -464,27 +520,10 @@ section {
     }
   }
 }
-#sorry {
-  padding: 50px 0px;
-  // background-color: #e9e9e9;
-  background-color: #252420;
-  .container {
-    .title {
-      color: #f2f1f0;
-      margin-bottom: 20px;
-      > strong {
-        color: #c61523;
-        font-weight: 800;
-      }
-    }
-    .subtitle {
-      margin-bottom: 0;
-    }
-  }
-}
+
 #procedure {
   padding: 100px 0px;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-dark);
   .container {
     .title {
       color: #f2f1f0;
@@ -699,6 +738,33 @@ section {
       padding-right: 16px;
     }
   }
+  #menu {
+    .subtitle {
+      margin-bottom: 94px;
+    }
+    .menu__wrapper {
+      flex-direction: column;
+      gap: 66px;
+      .menu__main {
+        width: 100%;
+        height: 300px;
+      }
+      .menu__sub {
+        width: 100%;
+        .menu__row {
+          gap: 66px;
+          flex-direction: column;
+        }
+      }
+      .menu__item {
+        width: 100% !important;
+        height: 300px;
+        .slider__container {
+          height: 300px;
+        }
+      }
+    }
+  }
 }
 @media all and (max-width: 830px) {
   section {
@@ -720,10 +786,11 @@ section {
     .navbar {
       flex-direction: column;
       align-items: flex-start;
+      padding: 24px 32px;
       .navbar__logo {
         > img {
-          height: auto;
-          width: 104px;
+          height: 28px;
+          width: 120px;
         }
       }
       .navbar__contents {
@@ -737,11 +804,11 @@ section {
           flex-direction: column;
           width: 100%;
           align-items: flex-start;
-
+          margin-top: 20px;
           .navbar__menu__item {
             width: 100%;
             margin: 0px;
-            padding: 20px 16px;
+            padding: 20px 0px;
           }
         }
         .navbar__inquiry_btn {
@@ -779,7 +846,6 @@ section {
           font-size: 18px;
           line-height: 1.4;
           padding: 20px 10px;
-          border-top: 2px solid #fff;
         }
       }
     }
@@ -960,5 +1026,13 @@ section {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       }
     }
+  }
+}
+
+@media all and (max-width: 350px) {
+  section .container,
+  #brand .brand__wrapper.container {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

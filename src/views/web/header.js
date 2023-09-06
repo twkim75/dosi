@@ -1,4 +1,4 @@
-import logo from "assets/logo.png";
+import logo from "assets/logo_white.png";
 import hamburger from "assets/button/hamburger.svg";
 import { useCallback, useEffect } from "react";
 
@@ -23,6 +23,10 @@ const Header = () => {
       inline: "nearest",
       behavior: "smooth",
     });
+    const el = document.querySelector(".navbar__contents");
+    if (el.classList.contains("open")) {
+      el.classList.remove("open");
+    }
   }, []);
 
   useEffect(() => {
@@ -47,7 +51,7 @@ const Header = () => {
           <ul className="navbar__menu">
             <li
               className="navbar__menu__item"
-              data-link="#video"
+              data-link="#brand"
               onClick={scrollIntoView}
             >
               브랜드

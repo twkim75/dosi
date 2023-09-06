@@ -1,6 +1,30 @@
+import { useEffect, useRef, useState } from "react";
+
 const Sorry = () => {
+  const elementRef = useRef(null);
+  const [scrollActive, setScrollActive] = useState(false);
+  const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting && !scrollActive) return setScrollActive(true);
+
+      const el = document.querySelector("#sorry .container");
+      if (el.classList.contains("active")) return;
+      el.classList.add("active");
+    });
+  };
+
+  useEffect(() => {
+    if (!elementRef.current) return;
+
+    const options = { root: null, threshold: 0.5 };
+    const io = new IntersectionObserver(callback, options);
+    io.observe(elementRef.current);
+    return () => {
+      io.disconnect();
+    };
+  }, []);
   return (
-    <section id="sorry">
+    <section id="sorry" ref={elementRef}>
       <div className="container">
         <h1 className="title">
           죄송한 말씀이지만,

@@ -5,6 +5,7 @@ import { Checkbox } from "../components/checkbox";
 
 const Consulting = () => {
   const [checked, setChecked] = useState(false);
+  const [comment, setComment] = useState("");
 
   return (
     <section id="consulting">
@@ -30,11 +31,14 @@ const Consulting = () => {
             </div>
             <div className="input__wrapper">
               <div>추가문의사항</div>
-              <FormTextareaStyled></FormTextareaStyled>
+              <FormTextareaStyled value={comment}></FormTextareaStyled>
             </div>
           </div>
           <div className="consulting__btn_wrapper">
-            <FormTextareaStyled readOnly>{CONSENT}</FormTextareaStyled>
+            <FormTextareaStyled
+              defaultValue={CONSENT}
+              readOnly
+            ></FormTextareaStyled>
             <Checkbox checked={checked} onChange={setChecked}>
               <span>위의 ‘개인정보의 제공 및 활용 동의서’ 에 동의합니다.</span>
             </Checkbox>
