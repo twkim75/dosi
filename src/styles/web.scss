@@ -227,7 +227,7 @@ section {
         word-break: keep-all;
         line-height: 1.6;
         padding: 20px 0px 20px 20px;
-        color: var(--color-dark-1);
+        color: var(--color-primary);
         font-size: 20px;
         border-top: 3px solid var(--color-primary);
       }
@@ -253,6 +253,7 @@ section {
       }
       .title {
         color: #fff;
+        font-family: "Outfit";
       }
       .subtitle {
         color: #fff;
@@ -327,6 +328,9 @@ section {
       transform: translateY(0px);
     }
   }
+  .title {
+    font-family: "Outfit";
+  }
   .title,
   .subtitle {
     color: #fff;
@@ -365,6 +369,7 @@ section {
       display: flex;
       justify-content: center;
       .item__title {
+        font-family: "Outfit";
         color: #fff;
         font-size: 42px;
         font-weight: 800;
