@@ -62,6 +62,7 @@ export const FormTextareaStyled = styled.textarea`
   resize: none;
   width: 100%;
   color: var(--color-dark-1);
+  border-radius: 6px;
   /* max-width: ${(props) => props.w || "900"}px; */
   height: 120px;
   &:focus-visible {
