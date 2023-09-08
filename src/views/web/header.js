@@ -5,7 +5,7 @@ import { useCallback, useEffect } from "react";
 const Header = () => {
   // 상단 메뉴 클릭 이벤트
   const toggleBtnClickEvent = () => {
-    const el = document.querySelector(".navbar__contents");
+    const el = document.querySelector(".navbar");
     if (el.classList.contains("open")) {
       el.classList.remove("open");
     } else {
@@ -23,7 +23,7 @@ const Header = () => {
       inline: "nearest",
       behavior: "smooth",
     });
-    const el = document.querySelector(".navbar__contents");
+    const el = document.querySelector(".navbar");
     if (el.classList.contains("open")) {
       el.classList.remove("open");
     }
@@ -41,6 +41,7 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <header id="header">
       <div className="navbar">
@@ -85,7 +86,7 @@ const Header = () => {
               창업안내
             </li>
           </ul>
-          <button className="navbar__inquiry_btn">1661 - 6450</button>
+          <button className="navbar__inquiry_btn">1661-3440</button>
         </div>
         <button className="navbar__toggle_btn" onClick={toggleBtnClickEvent}>
           <img src={hamburger} alt="메뉴 버튼"></img>

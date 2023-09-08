@@ -86,6 +86,18 @@
   src: local("Noto Sans KR"),
     url("/styles/fonts/NotoSansKR-Bold.ttf") format("woff2");
 }
+@font-face {
+  font-family: "Noto Sans KR";
+  font-weight: 800;
+  src: local("Noto Sans KR"),
+    url("/styles/fonts/NotoSansKR-ExtraBold.ttf") format("woff2");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-weight: 900;
+  src: local("Noto Sans KR"),
+    url("/styles/fonts/NotoSansKR-Black.ttf") format("woff2");
+}
 
 @font-face {
   font-family: "Outfit";

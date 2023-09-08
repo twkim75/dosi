@@ -48,13 +48,6 @@ const Interior = () => {
       <div className="interior__wrapper container">
         <div className="interior__contents">
           <h1 className="title">INTERIOR</h1>
-          <p className="subtitle">항상 꿈꿔 왔습니다.</p>
-          <p className="subtitle">
-            누구나 할 수 있는, 어디에서나 공존하는, 그런 인테리어의 공간이 아닌,
-            새롭고 세련되고 힙한 공간으로 수년간의 연구와 시도 끝에
-            만들어졌습니다.
-          </p>
-          <p className="subtitle">"도시맥주" 입니다.</p>
         </div>
         <div className="interior__slider_container">
           <Slider {...settings}>
@@ -74,7 +67,7 @@ const Banner = styled.img`
   width: 100%;
   height: 450px;
   object-fit: cover;
-
+  border-radius: 12px;
   @media all and (max-width: 830px) {
     height: 360px;
   }

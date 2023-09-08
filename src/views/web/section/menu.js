@@ -54,7 +54,8 @@ const Menu = () => {
           <h4 className="subtitle">도시맥주만의 최상의 퀄리티의 음식입니다.</h4>
         </div>
         <div className="menu__wrapper">
-          <div className="menu__main">
+          <CommingSoon>COMMING SOON.</CommingSoon>
+          {/* <div className="menu__main">
             <div className="menu__item main">
               <h3 className="item__title">MAIN</h3>
               <div className="slider__container">
@@ -116,7 +117,7 @@ const Menu = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
@@ -124,11 +125,64 @@ const Menu = () => {
 };
 
 export default Menu;
+const CommingSoon = styled.div`
+  line-height: 300px;
+  padding: 20px 0px;
+  font-family: "Outfit";
+  font-weight: 700;
+  color: #fff;
+  font-size: 100px;
+  width: 100%;
+  text-align: center;
+  @media all and (max-width: 900px) {
+    font-size: 64px;
+  }
+  @media all and (max-width: 635px) {
+    line-height: 150px;
+    font-size: 32px;
+  }
+`;
 const MainItem = styled.img`
   width: 100%;
-
+  height: 100%;
   object-fit: cover;
+  border-radius: 12px;
   @media all and (max-width: 1200px) {
     height: 300px;
+  }
+`;
+const MainCommingSoon = styled.div`
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  background-color: white;
+
+  > div {
+    line-height: 300px;
+    font-family: "Outfit";
+    font-weight: 700;
+    color: var(--color-dark-1);
+    font-size: 36px;
+  }
+  @media all and (max-width: 1200px) {
+    height: 300px;
+  }
+`;
+
+const SubCommingSoon = styled.div`
+  width: 100%;
+  height: 230px;
+  border-radius: 12px;
+  background-color: white;
+
+  > div {
+    line-height: 230px;
+    font-family: "Outfit";
+    font-weight: 700;
+    color: var(--color-dark-1);
+    font-size: 28px;
+  }
+  @media all and (max-width: 1200px) {
+    height: 230px;
   }
 `;

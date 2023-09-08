@@ -1,14 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import chart from "assets/dummy/chart.png";
+import { styled } from "styled-components";
 const Revenue = () => {
+  const elementRef = useRef(null);
+  const [scrollActive, setScrollActive] = useState(false);
+  const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting && !scrollActive) return setScrollActive(true);
+
+      const el = document.querySelector("#revenue .title__wrapper");
+      if (el.classList.contains("active")) return;
+      el.classList.add("active");
+    });
+  };
+
+  useEffect(() => {
+    if (!elementRef.current) return;
+
+    const options = { root: null, threshold: 0.3 };
+    const io = new IntersectionObserver(callback, options);
+    io.observe(elementRef.current);
+    return () => {
+      io.disconnect();
+    };
+  }, []);
+
   return (
-    <section id="revenue">
+    <section id="revenue" ref={elementRef}>
       <div className="revenue__wrapper container">
-        <h1 className="title">수익성</h1>
-        <h4 className="subtitle">
-          경쟁 브랜드도 앞다투며 도시맥주로 업종변경하는 이유!
-        </h4>
-        <div className="revenue__contents">
+        <div className="title__wrapper">
+          <h1 className="title">수익성</h1>
+          <h4 className="subtitle">
+            경쟁 브랜드도 앞다투며 도시맥주로 업종변경하는 이유!
+          </h4>
+        </div>
+        <CommingSoon>COMMING SOON.</CommingSoon>
+        {/* <div className="revenue__contents">
           <div className="contents__chart">
             <img src={chart}></img>
             <p className="__caption">
@@ -51,10 +78,28 @@ const Revenue = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
 };
 
 export default Revenue;
+
+const CommingSoon = styled.div`
+  line-height: 300px;
+  padding: 20px 0px;
+  font-family: "Outfit";
+  font-weight: 700;
+  color: var(--color-dark-1);
+  font-size: 100px;
+  width: 100%;
+  text-align: center;
+  @media all and (max-width: 900px) {
+    font-size: 64px;
+  }
+  @media all and (max-width: 635px) {
+    line-height: 150px;
+    font-size: 32px;
+  }
+`;

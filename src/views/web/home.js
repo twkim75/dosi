@@ -1,7 +1,7 @@
 import "styles/web.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./header";
 import Main from "views/web/section/main";
 import Brand from "views/web/section/brand";

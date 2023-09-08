@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import dummy1 from "assets/dummy/dummy_1.jpg";
 import dummy2 from "assets/dummy/dummy_2.png";
@@ -18,14 +18,39 @@ const Main = () => {
     slidesToScroll: 1,
     // swipe: false,
   };
+
+  const elementRef = useRef(null);
+
+  const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      const el = document.querySelector("#header");
+      if (!entry.isIntersecting) {
+        el.classList.add("header--dark");
+      } else {
+        el.classList.remove("header--dark");
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (!elementRef.current) return;
+
+    const options = { root: null, threshold: 0.9 };
+    const io = new IntersectionObserver(callback, options);
+    io.observe(elementRef.current);
+    return () => {
+      io.disconnect();
+    };
+  }, []);
+
   return (
-    <section id="main">
+    <section id="main" ref={elementRef}>
       <div className="slider__container">
         <Slider {...settings}>
           <Banner src={dummy2}></Banner>
           <Banner src={dummy1}></Banner>
-          <Banner src={dummy3}></Banner>
-          <Banner src={dummy4}></Banner>
+          {/* <Banner src={dummy3}></Banner>
+          <Banner src={dummy4}></Banner> */}
         </Slider>
       </div>
     </section>
