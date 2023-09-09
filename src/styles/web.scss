@@ -21,6 +21,7 @@
   overflow: auto;
 }
 section {
+  overflow: hidden;
   .container {
     max-width: 1200px;
     width: 100%;
@@ -316,12 +317,14 @@ section {
     .title {
       color: #f2f1f0;
       margin-bottom: 20px;
+      text-align: start;
       > strong {
         color: #c61523;
         font-weight: 800;
       }
     }
     .subtitle {
+      text-align: start;
       margin-bottom: 0;
     }
   }
@@ -508,16 +511,50 @@ section {
         transform: translateY(0px);
       }
     }
-    .store__map {
+    #map {
       width: 100%;
-      height: 400px;
-      background-color: white;
-      line-height: 400px;
-      font-size: 60px;
-      text-align: center;
+      height: 450px;
+      border-radius: 12px;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      div:has(> .marker_info_wrapper):is(
+          [style="position: absolute; left: 0px; top: 0px;"]
+        ) {
+        top: unset !important;
+        left: unset !important;
+        position: relative !important;
+        max-width: 146px !important;
+      }
+      div:has(div > .marker_info_wrapper) > div:empty {
+        margin-top: 0px;
+        top: unset !important;
+        bottom: -9px;
+      }
+      div:has(div > .marker_info_wrapper) {
+        border-radius: 8px;
+        border: 2px solid var(--color-primary-dark) !important;
+        display: inline-block !important;
+        height: unset !important;
+      }
+      .marker_info_wrapper {
+        > h4 {
+          font-weight: 700;
+          font-size: 14px;
+          font-family: "Noto Sans KR" !important;
+          padding: 8px !important;
+          color: var(--color-dark-1);
+        }
+        > h6 {
+          font-weight: 500;
+          font-size: 12px;
+          font-family: "Noto Sans KR" !important;
+          padding: 8px !important;
+          color: #888;
+        }
+      }
     }
   }
 }
+
 // 오픈예정
 #open {
   padding: 100px 0px;
@@ -531,13 +568,24 @@ section {
       grid-auto-rows: auto;
       .open_store__item {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         position: relative;
         border-radius: 12px;
         border: 3px solid rgba(255, 255, 255, 0.4);
         transition: all ease-in 300ms;
+        &.__empty {
+          > h1 {
+            font-family: "Outfit";
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+          }
+        }
         &:hover {
           border: 3px solid #fff;
+          transform: translateY(-10px);
           > .item__discription {
             transform: translateY(0px);
             opacity: 0.8;
@@ -757,11 +805,27 @@ section {
   }
 }
 #consulting {
-  padding: 50px 0px;
+  padding: 100px 0px;
   background-color: #322427;
   .container {
     .title {
       color: #f2f1f0;
+      opacity: 0;
+      transition: ease-in all var(--animation-duration);
+      transform: translateX(-100px);
+      &.active {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+    .subtitle {
+      opacity: 0;
+      transition: ease-in all var(--animation-duration);
+      transform: translateX(100px);
+      &.active {
+        opacity: 1;
+        transform: translateY(0px);
+      }
     }
     hr {
       border: 2px solid #f2f1f0;
@@ -773,6 +837,13 @@ section {
       border-radius: 8px;
       display: flex;
       gap: 20px;
+      opacity: 0;
+      transition: ease-in all var(--animation-duration);
+      transform: translateY(50px);
+      &.active {
+        opacity: 1;
+        transform: translateY(0px);
+      }
       .consulting__form {
         flex: 1;
         .input__wrapper {
@@ -1031,7 +1102,6 @@ section {
     }
   }
   #interior {
-    padding: 100px 0px;
     .interior__wrapper {
       flex-direction: column;
       gap: 40px;
@@ -1101,7 +1171,6 @@ section {
               justify-content: center;
               &.price.discount {
                 > span:last-child {
-                  margin-left: 8px;
                   font-weight: 700;
                 }
               }
@@ -1151,12 +1220,91 @@ section {
   }
 }
 @media all and (max-width: 500px) {
+  #video {
+    padding: 50px 0px;
+    .container {
+      > iframe {
+        height: 350px;
+      }
+    }
+  }
+  #brand {
+    .brand__wrapper {
+      padding: 50px 0px;
+    }
+  }
+  #interior {
+    padding: 50px 0px;
+  }
+  #sorry {
+    padding: 50px 0px;
+    .container {
+      .title {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.8;
+      }
+      .subtitle {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    }
+  }
+  #menu {
+    padding: 50px 0px;
+    .container {
+      .title__wrapper {
+        .subtitle {
+          margin-bottom: 42px;
+        }
+      }
+    }
+  }
+  #revenue {
+    padding: 50px 0px;
+    .container {
+      .title__wrapper {
+        .subtitle {
+          margin-bottom: 42px;
+        }
+      }
+    }
+  }
+  #store {
+    padding: 50px 0px;
+    .store__wrapper {
+      #map {
+        height: 350px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
   #open {
+    padding: 50px 0px;
     .open__wrapper {
       .open_store__items {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       }
     }
+  }
+  #procedure {
+    padding: 50px 0px;
+    .container {
+      .subtitle {
+        margin-bottom: 40px;
+      }
+    }
+  }
+  #cost {
+    padding: 50px 0px;
+    .cost__wrapper .cost__table .table__items .__item > div:last-child {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  }
+  #consulting {
+    padding: 50px 0px;
   }
 }
 
