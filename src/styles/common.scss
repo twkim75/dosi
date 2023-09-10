@@ -118,11 +118,24 @@
     url("/styles/fonts/Outfit-ExtraBold.ttf") format("woff2");
 }
 :root {
-  --color-dark-1: #222222;
+  // --color-dark-1: #222222;
   --color-primary: #47589e;
   --color-primary-dark: #384981;
 
   --animation-duration: 500ms;
+
+  /* admin */
+  --color-admin-main: #1c1b20;
+  --color-admin-sub: #ff7f01;
+  --color-dark-1: #3a3a3c;
+  --color-dark-2: #6b7588;
+  --color-dark-3: #8f90a6;
+  --color-dark-4: #c7c9d9;
+  --color-light-1: #dde5e9;
+  --color-light-2: #ebebf0;
+  --color-light-3: #f2f2f5;
+  --color-light-4: #fafafc;
+  --color-admin-border: #ebebf0;
 }
 * {
   box-sizing: border-box;
