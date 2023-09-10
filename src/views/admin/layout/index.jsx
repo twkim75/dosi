@@ -1,6 +1,6 @@
-import Nav from './Nav';
-import Header from './Header';
-import { styled } from 'styled-components';
+import Nav from "./Nav";
+import Header from "./Header";
+import { styled } from "styled-components";
 
 function Layout({ children }) {
   return (
@@ -32,5 +32,4 @@ const Contents = styled.div`
   height: calc(100vh - 65px);
   position: relative;
   overflow-y: scroll;
-  padding: 70px 0px;
 `;

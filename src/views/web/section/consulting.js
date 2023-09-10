@@ -2,7 +2,8 @@ import { CONSENT } from "const/consent";
 import { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { Checkbox } from "../components/checkbox";
-
+import { Toast } from "views/admin/components/Toast";
+import { regRequest } from "api/web";
 const Consulting = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -43,6 +44,44 @@ const Consulting = () => {
         return consultingWrapperEl.classList.add("active");
       }
     });
+  };
+  const reg = async () => {
+    if (!checked) {
+      Toast.info("개인정보 동의서를 동의해주세요.");
+      return false;
+    }
+    // const { id, pwd } = loginData;
+    if (formData.name === 0 || !formData.name) {
+      Toast.info("성함을 입력해주세요");
+      return document.querySelector("input[name=name]").focus();
+    }
+    if (formData.phone.length === 0 || !formData.phone) {
+      Toast.info("연락처를 입력해주세요");
+      return document.querySelector("input[name=phone]").focus();
+    }
+    if (formData.location.length === 0 || !formData.location) {
+      Toast.info("창업희망지역을 입력해주세요");
+      return document.querySelector("input[name=location]").focus();
+    }
+
+    const { data, status } = await regRequest({
+      name: formData.name,
+      phone: formData.phone,
+      hopeAddr: formData.location,
+      addText: formData.question,
+    });
+    if (status !== 200) {
+      return Toast.error("문의가 실패하였습니다.");
+    } else {
+      setFormData({
+        name: "",
+        phone: "",
+        location: "",
+        question: "",
+      });
+      setChecked(false);
+      return Toast.success("가맹점 문의 접수가 되었습니다.");
+    }
   };
 
   useEffect(() => {
@@ -104,6 +143,7 @@ const Consulting = () => {
               <div>추가문의사항</div>
               <FormTextareaStyled
                 name="question"
+                value={formData.question}
                 onChange={(e) => {
                   onChangeData(e, setFormData);
                 }}
@@ -120,8 +160,9 @@ const Consulting = () => {
             </Checkbox>
             <button
               onClick={() => {
-                console.log(formData);
-                console.log(checked);
+                reg();
+                // console.log(formData);
+                // console.log(checked);
               }}
             >
               문의하기

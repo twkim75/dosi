@@ -1,5 +1,111 @@
-function Main() {
-  return <div>메인</div>;
-}
+import "styles/request_list.scss";
 
-export default Main;
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { useSearchParams } from "react-router-dom";
+
+import SearchBox from "./SearchBox";
+import List from "./List";
+import { Toast } from "views/admin/components/Toast";
+
+import { getDayFormatHypen } from "utils/timeFormat";
+
+import { loadingState } from "recoil/back/loading";
+
+import {
+  listState,
+  listSearchParamState,
+  listPageState,
+} from "recoil/back/requestList";
+import { getRequestList } from "api/admin";
+
+function Home() {
+  const [searchParams] = useSearchParams();
+
+  const setList = useSetRecoilState(listState);
+  const setListSearchParam = useSetRecoilState(listSearchParamState);
+  const setListPage = useSetRecoilState(listPageState);
+
+  const setLoading = useSetRecoilState(loadingState);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("testt");
+      setLoading(true);
+      let params = {};
+      if (searchParams.size === 0) {
+        params = {
+          dateStart: getDayFormatHypen(new Date()),
+          dateEnd: getDayFormatHypen(new Date()),
+          pageNum: 1,
+          pageSize: 10,
+        };
+      } else {
+        const queryDateStart = searchParams.get("dateStart");
+        const queryDateEnd = searchParams.get("dateEnd");
+        const queryTransferType = parseInt(searchParams.get("transferType"));
+        const querySearchType = parseInt(searchParams.get("searchType"));
+        const querySearchWord = searchParams.get("searchWord") || "";
+        const queryPageNum = parseInt(searchParams.get("pageNum"));
+        const queryPageSize = parseInt(searchParams.get("pageSize"));
+        params = {
+          pageNum: queryPageNum,
+          pageSize: queryPageSize,
+        };
+        // 시작일시
+        if (queryDateStart?.length > 0 && !!queryDateStart) {
+          params["dateStart"] = queryDateStart;
+        }
+        // 종료일시
+        if (queryDateEnd?.length > 0 && !!queryDateEnd) {
+          params["dateEnd"] = queryDateEnd;
+        }
+        // 계약상태
+        if (queryTransferType > -1) {
+          params["transferType"] = queryTransferType;
+        }
+        // 검색조건 & 검색어
+        if (querySearchWord.length > 0 && !!querySearchWord) {
+          params["searchType"] = querySearchType;
+          params["searchWord"] = querySearchWord;
+        }
+      }
+
+      const { message, status, data } = await getRequestList(params);
+      console.log(status);
+      console.log(data);
+      // 여기서 하다가 멈춤
+
+      if (status !== 0) {
+        return Toast.error(message);
+      }
+
+      const { list, pageNum, pageSize, total } = data;
+
+      const resultList = list.map((item, index) => ({
+        no: total + (1 - pageNum) * pageSize - index,
+        id: item.idx,
+        ...item,
+      }));
+
+      setListPage({ pageNum, pageSize, total });
+      setListSearchParam(params);
+      setList(resultList);
+      setLoading(false);
+    };
+    fetchData();
+  });
+
+  return (
+    <>
+      <div className="contract_list_wrapper">
+        <span className="title body--medium text-dark-1">
+          가맹점 신청 리스트
+        </span>
+        <SearchBox></SearchBox>
+        <List></List>
+      </div>
+    </>
+  );
+}
+export default Home;

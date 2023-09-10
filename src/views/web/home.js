@@ -14,6 +14,8 @@ import Procedure from "views/web/section/procedure";
 import Cost from "views/web/section/cost";
 import Consulting from "views/web/section/consulting";
 import Footer from "views/web/section/footer";
+import "styles/common.scss";
+
 const Home = () => {
   return (
     <div className="wrapper">

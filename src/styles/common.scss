@@ -136,6 +136,33 @@
   --color-light-3: #f2f2f5;
   --color-light-4: #fafafc;
   --color-admin-border: #ebebf0;
+
+  --color-primary-lighter: #99bbff;
+  --color-primary-subtle: #e3edff;
+
+  // State Colors => standard 2
+  --color-error-1: #e53535;
+  --color-error-2: #ff3b3b;
+  --color-error-3: #ff5c5c;
+  --color-error-4: #ff8080;
+
+  --color-warning-1: #e6b800;
+  --color-warning-2: #ffcc00;
+  --color-warning-3: #fddd48;
+  --color-warning-4: #fded72;
+
+  --color-info-1: #004fc4;
+  --color-info-2: #0063f7;
+  --color-info-3: #5b8def;
+  --color-info-4: #9dbff9;
+
+  --color-success-1: #05a660;
+  --color-success-2: #06c270;
+  --color-success-3: #39d98a;
+  --color-success-4: #57eba1;
+
+  --color-white: #fff;
+  --color-border: var(--color-light-2);
 }
 * {
   box-sizing: border-box;

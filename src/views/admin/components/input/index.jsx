@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import RadioContext from "./RadioContext";
 
@@ -89,20 +89,23 @@ function RadioGroup({ label, children, ...rest }) {
     </RadioGroupWrapper>
   );
 }
+
 // 라디오 버튼
-function Radio({ children, value, name, disabled = false }) {
+function Radio({ children, value, name, disabled, first = false }) {
   const group = useContext(RadioContext);
+  const inputStyle = first ? {} : { marginLeft: "20px" };
   return (
     <RadioWrapper disabled={disabled}>
       <input
         type="radio"
         value={value}
+        style={inputStyle}
         name={name}
         disabled={disabled || group.disabled}
         checked={group.value !== undefined ? value === group.value : undefined}
-        onChange={(e) => group.onChange && group.onChange(e)}
+        onChange={(e) => group.onChange && group.onChange(e.target.value)}
       />
-      <span>{children}</span>
+      <span className="__label">{children}</span>
     </RadioWrapper>
   );
 }
@@ -112,7 +115,6 @@ const RadioGroupWrapper = styled.fieldset`
   border: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `;
 const RadioWrapper = styled.label`
   cursor: pointer;
@@ -121,12 +123,14 @@ const RadioWrapper = styled.label`
   font-size: 14px;
   opacity: ${(props) => (props.disabled ? 0.4 : 1)};
   color: var(--color-dark-1);
+
   > input {
     cursor: pointer;
     appearance: none;
     margin-right: 8px;
     width: 20px;
     height: 20px;
+
     border-radius: 50%;
     border: 1px solid #c7c9d9;
     background-color: #f2f2f5;

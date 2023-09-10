@@ -1,0 +1,110 @@
+.select__container {
+  height: 46px;
+  width: 125px;
+  position: relative;
+  .select__btn {
+    height: 46px;
+    border-radius: 6px;
+    border: 1px solid var(--color-light-1);
+    width: 125px;
+    padding-left: 16px;
+
+    color: var(--color-dark-2) !important;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    // line-height: 170%;
+    text-align: left;
+    background-color: white;
+    display: flex;
+    align-items: center;
+  }
+  .list__select {
+    border: 1px solid var(--color-light-2);
+  }
+}
+
+.select__control {
+  background: transparent;
+  top: 46px;
+  z-index: 10;
+}
+
+.optionitem {
+  font-size: 14px;
+  height: 46px;
+  border: 1px solid var(--color-light-1);
+  border-top: none;
+  width: 125px;
+  padding-left: 16px;
+  background-color: white;
+  align-items: center;
+  display: flex;
+  color: var(--color-dark-2);
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  // line-height: 170%;
+  z-index: 10;
+
+  position: relative;
+}
+.optionitem:hover {
+  color: var(--color-primary);
+}
+.optionitem:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.optionitem:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.select__control option {
+  color: var(--color-dark-2);
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+.select__icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  height: inherit;
+  padding-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & svg.select__iconvalue {
+    height: 6px;
+  }
+}
+
+.select__container .select__icon svg {
+  // 부드럽게 회전
+  transition: 0.3s;
+}
+.clicked {
+  transform: rotate(180deg);
+}
+.hidden {
+  display: none;
+}
+
+// select 스크롤바
+.select__control::-webkit-scrollbar {
+  width: 8px;
+}
+.select__control::-webkit-scrollbar-thumb {
+  height: 33px; /* 스크롤바의 길이 */
+  background: var(--color-dark-2); /* 스크롤바의 색상 */
+  border-radius: 100px;
+}
+
+.select__control::-webkit-scrollbar-track {
+  background: #e8e8e8; /*스크롤바 뒷 배경 색상*/
+}

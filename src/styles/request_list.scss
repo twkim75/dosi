@@ -1,0 +1,193 @@
+.contract_list_wrapper {
+  padding: 30px 50px;
+  width: 1440px;
+  margin: auto;
+  //   검색박스
+  .search_box_wrapper {
+    margin-top: 23px;
+    margin-bottom: 20px;
+    .search_box {
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border-collapse: collapse;
+      width: 100%;
+      tbody > tr {
+        display: flex;
+        width: 100%;
+        &:first-child {
+          border: 1px solid var(--color-border);
+          border-top-left-radius: 6px;
+          border-top-right-radius: 6px;
+          td:first-child {
+            > .__name {
+              border-top-left-radius: 5px;
+            }
+          }
+        }
+        &:last-child {
+          border: 1px solid var(--color-border);
+          border-top: none;
+          border-bottom-left-radius: 6px;
+          border-bottom-right-radius: 6px;
+          td:first-child {
+            > .__name {
+              border-bottom-left-radius: 5px;
+            }
+          }
+        }
+        > td {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          //width: 670px;
+          height: 60px;
+          .__name {
+            background-color: var(--color-light-4);
+            width: 132px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            // padding: 18px 20px;
+          }
+          .__search_item {
+            padding-left: 18px;
+            width: calc(100% - 132px);
+            &.date {
+              display: flex;
+              align-items: center;
+              .react-datepicker-wrapper {
+                width: 414px;
+                input {
+                  height: 46px;
+                  width: 414px;
+                }
+              }
+
+              .all_btn {
+                margin-left: 16px;
+                background-color: var(--color-primary-subtle);
+                color: var(--color-primary);
+                width: 73px;
+                padding: 0;
+                height: 46px;
+              }
+            }
+            &.transferType {
+              .select__container {
+                width: 441px;
+                .select__btn {
+                  width: 441px;
+                }
+                .select__control {
+                  .optionitem {
+                    width: 441px;
+                  }
+                }
+              }
+            }
+            &.search_type {
+              > .radio_group__wrapper {
+                height: 24px;
+                justify-content: start;
+                label {
+                  margin-left: 21px;
+                  &:nth-child(2) {
+                    margin-left: 0;
+                  }
+                }
+              }
+            }
+            &.search_word {
+              > .text_field__wrapper {
+                width: 441px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .search_btn {
+      width: 74px;
+      margin: 0 0 0 auto;
+      display: flex;
+    }
+  }
+  .list_wrapper {
+    .top_btn_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      .excel_btn {
+        background-color: var(--color-success-2);
+        color: var(--color-white);
+      }
+      .select__container {
+        height: 42px;
+        width: 84px;
+        .select__btn {
+          height: 42px;
+          width: 84px;
+        }
+        .select__control {
+          top: 42px;
+          .optionitem {
+            width: 84px;
+          }
+        }
+      }
+    }
+
+    .list {
+      .MuiPaper-root > .MuiBox-root {
+        border-radius: 6px;
+      }
+      .MuiTable-root {
+        // border: 1px solid var(--color-border) !important;
+        border-spacing: 0px !important;
+        .MuiTableHead-root {
+          height: 50px;
+          .MuiTableCell-root {
+            border-bottom: 1px solid var(--color-border);
+            &:first-child {
+              border-top-left-radius: 6px;
+            }
+            &:last-child {
+              border-top-right-radius: 6px;
+            }
+          }
+        }
+        .MuiTableBody-root {
+          .MuiTableRow-root {
+            height: 56px;
+            &:hover {
+              background-color: #f7faff;
+            }
+
+            // &:last-child {
+            //   .MuiTableCell-root:first-child {
+            //     border-bottom-left-radius: 6px;
+            //   }
+            //   .MuiTableCell-root:last-child {
+            //     border-bottom-right-radius: 6px;
+            //   }
+            // }
+            > .MuiTableCell-root {
+              .show_details_btn {
+                padding: 0;
+                width: 53px;
+                height: 24px;
+                font-weight: 400;
+                font-size: 12px;
+                border-radius: 999px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

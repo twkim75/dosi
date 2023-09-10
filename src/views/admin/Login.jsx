@@ -7,6 +7,7 @@ import Button from "views/admin/components/Button";
 import { Toast } from "views/admin/components/Toast";
 // import { loginAction } from "api/admin/auth";
 import { useCookies } from "react-cookie";
+import { loginAction } from "api/admin";
 
 function Login() {
   const navigate = useNavigate();
@@ -33,17 +34,16 @@ function Login() {
       Toast.info("비밀번호를 입력해주세요");
       return document.querySelector("input[name=pwd]").focus();
     }
-
-    // const { data, status } = await loginAction({ id, pwd });
-    // if (status !== 200) {
-    //   return Toast.error("아이디 혹은 비밀번호를 확인해주세요");
-    // }
+    const { data, status } = await loginAction({ id: id, pwd: pwd });
+    if (status !== 200) {
+      return Toast.error("아이디 혹은 비밀번호를 확인해주세요");
+    }
+    localStorage.setItem("login", "Y");
 
     // const { access_token, refresh_token } = data;
-    // localStorage.setItem("accessToken", access_token);
     // localStorage.setItem("refreshToken", refresh_token);
 
-    // navigate("/ad/home");
+    navigate("/ad/home");
   };
 
   // 아이디 저장

@@ -1,0 +1,99 @@
+// 버튼 컴포넌트
+button {
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  background-color: var(--color-light-3);
+  color: var(--color-dark-1);
+  border-radius: 6px;
+  /* type */
+  // 테두리 있는 버튼
+  &.outlined {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+  // 아이콘 버튼
+  &.icon {
+    padding: 12px;
+    color: var(--color-dark-1);
+    background-color: transparent;
+  }
+  // 브랜드 컬러 버튼
+  &.primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  /* size */
+  &.btn--small {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  &.btn--medium {
+    padding: 14px 32px;
+    font-size: 16px;
+  }
+  &.btn--large {
+    padding: 14px 48px;
+    // font-size: 18px;
+    font-size: 16px;
+  }
+
+  /*  효과 */
+  // 호버 시
+  // &:hover {
+  //   background-color: var(--color-light-1);
+  //   color: var(--color-dark-1);
+  //   &.primary {
+  //     background-color: var(--color-primary-lighter);
+  //     color: var(--color-white);
+  //   }
+  //   &.icon {
+  //     background-color: var(--color-light-1);
+  //   }
+  //   &.outlined {
+  //     background-color: var(--color-light-3);
+  //     color: var(--color-primary);
+  //   }
+  // }
+
+  // 액티브 시
+  //&:active {
+  //  background-color: var(--color-dark-4);
+  //  color: var(--color-dark-1);
+  //  &.primary {
+  //    background-color: var(--color-primary-darker);
+  //    color: var(--color-white);
+  //  }
+  //  &.icon {
+  //    background-color: var(--color-dark-4);
+  //  }
+  //}
+
+  // disabled 시
+  &:disabled {
+    background-color: var(--color-light-3);
+    color: var(--color-dark-1);
+    opacity: 0.4;
+    > svg {
+      fill: #e1e6ef;
+    }
+    &.primary {
+      background-color: var(--color-primary);
+      color: rgba(255, 255, 255, 0.4);
+    }
+    &.icon {
+      color: var(--color-dark-1);
+      background-color: transparent;
+    }
+    &.outlined {
+      border: 1px solid #e1e6ef;
+      background: linear-gradient(0deg, #ffffff, #ffffff),
+        linear-gradient(0deg, #e1e6ef, #e1e6ef);
+      color: var(--color-dark-4);
+      opacity: 1;
+    }
+  }
+}
