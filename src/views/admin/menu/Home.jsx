@@ -71,16 +71,16 @@ function Home() {
         }
       }
 
-      const { message, status, data } = await getRequestList(params);
+      const { message, status, result } = await getRequestList(params);
       console.log(status);
-      console.log(data);
+      console.log(result);
       // 여기서 하다가 멈춤
 
       if (status !== 0) {
         return Toast.error(message);
       }
 
-      const { list, pageNum, pageSize, total } = data;
+      const { list, pageNum, pageSize, total } = result;
 
       const resultList = list.map((item, index) => ({
         no: total + (1 - pageNum) * pageSize - index,

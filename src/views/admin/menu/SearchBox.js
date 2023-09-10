@@ -25,7 +25,7 @@ function SearchBox() {
   const [dateEnd, setDateEnd] = useState(null);
   // 계약상태 (-1:전체, 0: 링크전송, 1:제출, 2:반려, 3:승인)
   // 검색조건 (0: 이름, 1:휴대폰번호,2:이메일,3:등록자)
-  const [searchType, setSearchType] = useState(1);
+  const [searchType, setSearchType] = useState(0);
   // 검색어
   const [searchWord, setSearchWord] = useState("");
 
@@ -52,7 +52,7 @@ function SearchBox() {
     }
 
     navigate({
-      pathname: "/contract_list",
+      pathname: "/ad/home",
       search: `?${createSearchParams(params)}`,
     });
   };

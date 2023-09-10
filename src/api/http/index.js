@@ -8,4 +8,7 @@ const http = axios.create({
   timeout: 5000,
 });
 
+http.interceptors.response.use((res) => {
+  return res.data;
+});
 export default http;

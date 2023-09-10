@@ -132,7 +132,7 @@ function List() {
         },
       },
       {
-        field: "address",
+        field: "hopeAddr",
         title: "희망지역",
         sorting: false,
         width: "130px",
