@@ -52,7 +52,7 @@ function SearchBox() {
     }
 
     navigate({
-      pathname: "/ad/home",
+      pathname: "/ad/apply_list",
       search: `?${createSearchParams(params)}`,
     });
   };

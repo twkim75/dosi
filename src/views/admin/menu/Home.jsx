@@ -1,6 +1,6 @@
 import "styles/request_list.scss";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { useSearchParams } from "react-router-dom";
 
@@ -21,16 +21,13 @@ import { getRequestList } from "api/admin";
 
 function Home() {
   const [searchParams] = useSearchParams();
-
   const setList = useSetRecoilState(listState);
   const setListSearchParam = useSetRecoilState(listSearchParamState);
   const setListPage = useSetRecoilState(listPageState);
-
   const setLoading = useSetRecoilState(loadingState);
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("testt");
       setLoading(true);
       let params = {};
       if (searchParams.size === 0) {
@@ -98,9 +95,9 @@ function Home() {
 
   return (
     <>
-      <div className="contract_list_wrapper">
+      <div className="apply_list_wrapper">
         <span className="title body--medium text-dark-1">
-          가맹점 신청 리스트
+          가맹상담 신청 리스트
         </span>
         <SearchBox></SearchBox>
         <List></List>

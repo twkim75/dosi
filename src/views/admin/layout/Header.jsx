@@ -12,7 +12,8 @@ function Header() {
 
   const headerTitle = useMemo(() => {
     const nowPath = location.pathname.split("/")[2];
-    if (nowPath === "home") return "홈 대시보드";
+    if (!nowPath) return "가맹상담 신청 리스트";
+    if (nowPath === "home") return "가맹상담 신청 리스트";
     if (nowPath === "category_edit") return "카테고리 수정하기";
     if (nowPath === "product_edit") return "제품 수정하기";
     if (nowPath.includes("notice")) return "공지사항";

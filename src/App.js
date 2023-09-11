@@ -1,4 +1,4 @@
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes, Outlet, Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 // web
@@ -33,8 +33,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ad/login" element={<AuthAdminLoginPage />} />
-        <Route element={<AdminCommonLayout />}>
-          <Route path="/ad/home" element={<AuthAdminHomePage />} />
+        <Route path={"/ad"} element={<AdminCommonLayout />}>
+          <Route index element={<Navigate to="/ad/apply_list" />} />
+          <Route path={"home"} element={<Navigate to="/ad/apply_list" />} />
+          <Route path={"apply_list"} element={<AuthAdminHomePage />} />
+          {/* <Route path={"apply_detail"} element={<AuthAdminApplyDetail />} /> */}
         </Route>
         {/* <Route path="/ad/home" element={<Login />} /> */}
       </Routes>

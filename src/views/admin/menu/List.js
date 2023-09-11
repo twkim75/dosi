@@ -21,6 +21,7 @@ import {
   listPageState,
 } from "recoil/back/requestList";
 import { getDayFormatHypen } from "utils/timeFormat";
+import ApplyDetailDialog from "./apply/ApplyDetailDialog";
 
 function List() {
   const navigate = useNavigate();
@@ -30,6 +31,17 @@ function List() {
   const getPage = useRecoilValue(listPageState);
 
   const [pageSize, setPageSize] = useState(10);
+
+  const [dialog, setDialog] = useState({
+    show: false,
+    detail: {
+      name: "",
+      hopeAddr: "",
+      addText: "",
+      regDate: "",
+      phone: "",
+    },
+  });
 
   const pageSizeList = [
     { label: "10건", value: 10 },
@@ -77,7 +89,7 @@ function List() {
     params["pageSize"] = size;
 
     navigate({
-      pathname: "/contract_list",
+      pathname: "/ad/apply_list",
       search: `?${createSearchParams(params)}`,
     });
   };
@@ -87,9 +99,24 @@ function List() {
     let params = { ...getSearchParam };
     params["pageNum"] = page;
     navigate({
-      pathname: "/contract_list",
+      pathname: "/ad/apply_list",
       search: `?${createSearchParams(params)}`,
     });
+  };
+
+  // 상세보기 다이얼로그
+  const viewBtnEvent = (row) => {
+    const parameter = {
+      show: true,
+      detail: {
+        name: row.name,
+        hopeAddr: row.hopeAddr,
+        addText: row.addText,
+        regDate: row.regDate,
+        phone: row.phone,
+      },
+    };
+    setDialog(parameter);
   };
 
   const columns = useMemo(
@@ -155,9 +182,7 @@ function List() {
             type="outlined"
             size="small"
             btnClickEvent={() => {
-              navigate({
-                pathname: `/contract_detail/${rowData.idx}`,
-              });
+              viewBtnEvent(rowData);
             }}
           ></Button>
         ),
@@ -165,7 +190,6 @@ function List() {
     ],
     []
   );
-
   return (
     <>
       <div className="list_wrapper">
@@ -226,6 +250,23 @@ function List() {
           )}
         </div>
       </div>
+      {dialog.show && (
+        <ApplyDetailDialog
+          detail={dialog.detail}
+          closeDialog={() => {
+            setDialog({
+              show: false,
+              detail: {
+                name: "",
+                hopeAddr: "",
+                addText: "",
+                regDate: "",
+                phone: "",
+              },
+            });
+          }}
+        ></ApplyDetailDialog>
+      )}
     </>
   );
 }
