@@ -7,6 +7,8 @@ import Home from "views/web/home";
 import Layout from "views/admin/layout";
 import Login from "views/admin/Login";
 import AdminHome from "views/admin/menu/Home";
+import AdminPopupWrite from "views/admin/menu/popup/PopupWrite";
+import AdminPopupList from "views/admin/menu/popup/PopupList";
 
 import { StyledToastConatiner } from "views/admin/components/Toast";
 import Auth from "hoc/auth";
@@ -26,6 +28,8 @@ function App() {
   // admin
   const AuthAdminLoginPage = Auth(Login, null);
   const AuthAdminHomePage = Auth(AdminHome, null);
+  const AuthAdminPopupRegPage = Auth(AdminPopupWrite, null);
+  const AuthAdminPopupListPage = Auth(AdminPopupList, null);
 
   return (
     <>
@@ -37,6 +41,8 @@ function App() {
           <Route index element={<Navigate to="/ad/apply_list" />} />
           <Route path={"home"} element={<Navigate to="/ad/apply_list" />} />
           <Route path={"apply_list"} element={<AuthAdminHomePage />} />
+          <Route path={"popup_reg"} element={<AuthAdminPopupRegPage />} />
+          <Route path={"popup_list"} element={<AuthAdminPopupListPage />} />
           {/* <Route path={"apply_detail"} element={<AuthAdminApplyDetail />} /> */}
         </Route>
         {/* <Route path="/ad/home" element={<Login />} /> */}

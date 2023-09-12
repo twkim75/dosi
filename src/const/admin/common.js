@@ -4,20 +4,20 @@ const navMenu = [
     id: "apply_list",
     name: "가맹상담 신청 리스트",
   },
-  // {
-  //   id: "popup",
-  //   name: "팝업관리",
-  //   children: [
-  //     {
-  //       id: "popup_reg",
-  //       name: "팝업등록하기",
-  //     },
-  //     {
-  //       id: "popup_list",
-  //       name: "팝업리스트",
-  //     },
-  //   ],
-  // },
+  {
+    id: "popup",
+    name: "팝업관리",
+    children: [
+      {
+        id: "popup_reg",
+        name: "팝업등록하기",
+      },
+      {
+        id: "popup_list",
+        name: "팝업리스트",
+      },
+    ],
+  },
   // {
   //   id: "youtube",
   //   name: "유튜브관리",

@@ -17,8 +17,31 @@ import Footer from "views/web/section/footer";
 import "styles/common.scss";
 
 const Home = () => {
+  const [homeData, setHomeData] = useState({
+    popup: [],
+    banner: [],
+  });
+
   return (
     <div className="wrapper">
+      {/* {popup.map((item, index) => (
+        <Popup
+          key={`popup_${item.idx}`}
+          index={index}
+          item={item}
+          closeEvent={(idx) => {
+            const popupResult = popup.map((item) => ({
+              ...item,
+              isShow: idx === item.idx ? false : item.isShow,
+            }));
+            setMainData((preval) => ({
+              ...preval,
+              popup: popupResult,
+            }));
+          }}
+        ></Popup>
+      ))} */}
+
       <Header></Header>
       <main>
         {/* 메인슬라이드 */}
