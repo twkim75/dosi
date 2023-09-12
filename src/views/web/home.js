@@ -24,7 +24,7 @@ const Home = () => {
         {/* 메인슬라이드 */}
         <Main></Main>
         {/* 영상 */}
-        <section id="video">
+        {/* <section id="video">
           <div className="container">
             <iframe
               width="100%"
@@ -36,7 +36,7 @@ const Home = () => {
               allowFullScreen
             ></iframe>
           </div>
-        </section>
+        </section> */}
         {/* 브랜드 */}
         <Brand></Brand>
         {/* 인테리어 */}

@@ -32,8 +32,7 @@ function Header() {
           width={"120px"}
           height={"42px"}
           onClick={() => {
-            localStorage.removeItem("accessToken");
-            localStorage.removeItem("refreshToken");
+            localStorage.removeItem("login");
             navigate("/ad/login");
           }}
         >

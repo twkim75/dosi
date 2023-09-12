@@ -53,8 +53,8 @@ const Interior = () => {
           <Slider {...settings}>
             <Banner src={dummy2}></Banner>
             <Banner src={dummy1}></Banner>
-            <Banner src={dummy3}></Banner>
-            <Banner src={dummy4}></Banner>
+            {/* <Banner src={dummy3}></Banner>
+            <Banner src={dummy4}></Banner> */}
           </Slider>
         </div>
       </div>

@@ -58,15 +58,12 @@ function List() {
   });
 
   const exportExcel = async () => {
-    const accessToken = localStorage.getItem("accessToken");
-
     let params = { ...getSearchParam };
     axios({
       method: "GET",
-      url: `${process.env.REACT_APP_SERVER_URL}/v1/contract/excel`,
+      url: `${process.env.REACT_APP_SERVER_URL}/api/request/excel`,
       responseType: "blob", // 가장 중요함
       headers: {
-        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       params,

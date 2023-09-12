@@ -2,7 +2,7 @@ import "styles/request_list.scss";
 
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 import SearchBox from "./SearchBox";
 import List from "./List";
@@ -11,7 +11,6 @@ import { Toast } from "views/admin/components/Toast";
 import { getDayFormatHypen } from "utils/timeFormat";
 
 import { loadingState } from "recoil/back/loading";
-
 import {
   listState,
   listSearchParamState,
@@ -20,6 +19,7 @@ import {
 import { getRequestList } from "api/admin";
 
 function Home() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const setList = useSetRecoilState(listState);
   const setListSearchParam = useSetRecoilState(listSearchParamState);
@@ -28,6 +28,10 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (localStorage.getItem("login") === null) {
+        console.log("test");
+        navigate("/ad/login");
+      }
       setLoading(true);
       let params = {};
       if (searchParams.size === 0) {
