@@ -10,7 +10,9 @@ const http = axios.create({
 
 http.interceptors.response.use(
   (res) => {
-    return res.data;
+    // console.log("res : ", res);
+    const { data, status } = res;
+    return { data, status };
   },
   async (err) => {
     const { status } = err.response;

@@ -53,9 +53,9 @@ export default Popup;
 
 const PopupWrapper = styled.div`
   position: absolute;
-  z-index: ${({ $index }) => 3 + $index};
+  z-index: ${({ $index }) => 21 + $index};
   top: ${({ $index }) => 30 + 36 * $index + "px"};
-  left: ${({ $index }) => 50 + 70 * $index + "px"};
+  left: ${({ $index }) => 100 + 70 * $index + "px"};
   border: 1px solid #dbdbdb;
   background-color: white;
 `;

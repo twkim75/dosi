@@ -83,7 +83,7 @@ const CheckBoxWrapper = styled.label`
 // 라디오 그룹
 function RadioGroup({ label, children, ...rest }) {
   return (
-    <RadioGroupWrapper style={rest.style}>
+    <RadioGroupWrapper style={rest.style} key={rest.key}>
       <legend>{label}</legend>
       <RadioContext.Provider value={rest}>{children}</RadioContext.Provider>
     </RadioGroupWrapper>

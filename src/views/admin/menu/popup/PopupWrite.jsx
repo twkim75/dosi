@@ -1,5 +1,8 @@
+import { popupCreateAPI } from "api/admin";
 import { useCallback, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { loadingState } from "recoil/back/loading";
 import {
   BottomBtnWrapper,
   ContentContainer,
@@ -11,16 +14,18 @@ import {
 } from "styles/sc/admin";
 import Button from "views/admin/components/Button";
 import Editor from "views/admin/components/Editor";
+import { Toast } from "views/admin/components/Toast";
 import { Radio, RadioGroup, TextField } from "views/admin/components/input";
 
 function PopupWrite() {
   const location = useLocation();
   const navigate = useNavigate();
   let { id } = useParams();
+  const setLoading = useSetRecoilState(loadingState);
   const [writeData, setWriteData] = useState({
     title: "",
     content: "",
-    isDisplayed: "Y",
+    display: "N",
   });
 
   const onChangeData = (e, setData) => {
@@ -30,12 +35,19 @@ function PopupWrite() {
 
   const onChangeRadioData = (value, setData) => {
     // const { name, value } = e.currentTarget;
-    setData((preVal) => ({ ...preVal, isDisplayed: value }));
+    setData((preVal) => ({ ...preVal, display: value }));
   };
 
   const handleSubmit = useCallback(async () => {
-    console.log("writeData : ", writeData);
-    // !id ? await create() : await update();
+    setLoading(true);
+    const { data, status } = await popupCreateAPI(writeData);
+    if (status === 200) {
+      navigate(`/ad/popup_list`);
+      Toast.success("등록되었습니다.");
+    } else {
+      Toast.error("데이터 처리중 오류가 발생하였습니다.");
+    }
+    setLoading(false);
   }, [writeData]);
 
   const pageTitle = useMemo(() => {
@@ -79,15 +91,15 @@ function PopupWrite() {
           <FormBoxItemValue style={{ height: "60px" }}>
             <RadioGroup
               style={{ width: "200px" }}
-              value={writeData.isDisplayed}
+              value={writeData.display}
               onChange={(e) => {
                 onChangeRadioData(e, setWriteData);
               }}
             >
-              <Radio name="isDisplayed" value="Y">
+              <Radio name="display" value="Y">
                 노출
               </Radio>
-              <Radio name="isDisplayed" value="N">
+              <Radio name="display" value="N">
                 비노출
               </Radio>
             </RadioGroup>

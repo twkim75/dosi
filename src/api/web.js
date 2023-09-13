@@ -3,11 +3,17 @@ import http from "./http";
 const PREFIX = "/api/request";
 
 /**
- * 로그인
+ * 가맹상담 신청
  * @returns
  */
-const regRequest = ({ name, phone, hopeAddr, addText }) => {
+export const regRequest = ({ name, phone, hopeAddr, addText }) => {
   return http.post(`${PREFIX}/reg`, { name, phone, hopeAddr, addText });
 };
 
-export { regRequest };
+/**
+ * 팝업리스트 조회(랜딩페이지)
+ * @returns
+ */
+export const showPopupDataAPI = () => {
+  return http.get("/api/notice/display/notice");
+};

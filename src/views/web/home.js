@@ -15,6 +15,8 @@ import Cost from "views/web/section/cost";
 import Consulting from "views/web/section/consulting";
 import Footer from "views/web/section/footer";
 import "styles/common.scss";
+import { showPopupDataAPI } from "api/web";
+import Popup from "./components/popup";
 
 const Home = () => {
   const [homeData, setHomeData] = useState({
@@ -22,9 +24,47 @@ const Home = () => {
     banner: [],
   });
 
+  const { popup, banner } = homeData;
+
+  const popupCloseExpired = (idx) => {
+    const expiredDate = Number(localStorage.getItem(`popup_${idx}`));
+    const now = new Date();
+
+    if (expiredDate < now.getTime()) {
+      localStorage.removeItem(`popup_${idx}`);
+      return true;
+    }
+  };
+
+  const fetchData = async () => {
+    let result = {};
+    const { status: popupStatus, data: popupData } = await showPopupDataAPI();
+    if (popupStatus === 200) {
+      const { result: popups } = popupData;
+      const popupResult = popups.map((item) => ({
+        ...item,
+        isShow: localStorage.getItem(`popup_${item.idx}`)
+          ? popupCloseExpired(item.idx)
+          : true,
+      }));
+      result = {
+        popup: popupResult,
+      };
+    }
+
+    setHomeData((preval) => ({
+      ...preval,
+      ...result,
+    }));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="wrapper">
-      {/* {popup.map((item, index) => (
+      {popup.map((item, index) => (
         <Popup
           key={`popup_${item.idx}`}
           index={index}
@@ -34,13 +74,13 @@ const Home = () => {
               ...item,
               isShow: idx === item.idx ? false : item.isShow,
             }));
-            setMainData((preval) => ({
+            setHomeData((preval) => ({
               ...preval,
               popup: popupResult,
             }));
           }}
         ></Popup>
-      ))} */}
+      ))}
 
       <Header></Header>
       <main>

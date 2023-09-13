@@ -20,23 +20,21 @@ function Editor({ content, setContents }) {
         return new Promise((resolve, reject) => {
           const formData = new FormData();
           loader.file.then((file) => {
-            // const accessToken = localStorage.getItem('accessToken');
-            // const refreshToken = localStorage.getItem('refreshToken');
-            formData.append("file", file);
+            formData.append("profileURL", file);
             axios({
               method: "POST",
               url: `${process.env.REACT_APP_SERVER_URL}/api/notice/img/save`,
               headers: {
-                // Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "multipart/form-data",
-                // 'refresh-token': refreshToken,
               },
               data: formData,
             })
               .then((res) => {
+                console.log("res : ", res);
+                const { result } = res.data;
                 resolve({
                   // 수정필요 (이미지 띄우는 url)
-                  // default: `${process.env.REACT_APP_SERVER_URL}/${res.data.data[0].filename}`,
+                  default: `${result}`,
                 });
               })
               .catch((err) => reject(err));
