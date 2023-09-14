@@ -29,7 +29,6 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       if (localStorage.getItem("login") === null) {
-        console.log("test");
         navigate("/ad/login");
       }
       setLoading(true);
@@ -72,15 +71,19 @@ function Home() {
         }
       }
 
-      const { message, status, result } = await getRequestList(params);
-      console.log(status);
-      console.log(result);
+      const { status, data } = await getRequestList(params);
       // 여기서 하다가 멈춤
 
-      if (status !== 0) {
-        return Toast.error(message);
+      if (status !== 200) {
+        setLoading(false);
+        return Toast.error("데이터를 불러오는데 실패하였습니다.");
       }
 
+      const { message, result, status: dataStatus } = data;
+      if (dataStatus !== 0) {
+        setLoading(false);
+        return Toast.error(message);
+      }
       const { list, pageNum, pageSize, total } = result;
 
       const resultList = list.map((item, index) => ({

@@ -31,6 +31,34 @@ export const popupListAPI = () => {
   return http.get(`${PREFIX}/notice/list`);
 };
 
+/**
+ * 팝업 노출여부 변경
+ * @returns
+ */
 export const popupDisplayChangeAPI = (data) => {
   return http.post(`${PREFIX}/notice/mod`, data);
+};
+
+/**
+ * 이미지 등록
+ * @param {*} data
+ * @returns
+ */
+export const imageSaveAPI = (data) => {
+  return http.post(`${PREFIX}/main/save`, data);
+};
+
+/**
+ * 이미지 리스트
+ */
+export const imageListAPI = (page) => {
+  return http.get(`${PREFIX}/main/list?pageNum=${page}`);
+};
+
+/**
+ * 팝업 노출여부 변경
+ * @returns
+ */
+export const imageDisplayChangeAPI = (data) => {
+  return http.post(`${PREFIX}/main/mod`, data);
 };

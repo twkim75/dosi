@@ -18,6 +18,20 @@ const navMenu = [
       },
     ],
   },
+  {
+    id: "image",
+    name: "이미지 관리",
+    children: [
+      {
+        id: "image_reg",
+        name: "이미지 등록",
+      },
+      {
+        id: "image_list",
+        name: "이미지 리스트",
+      },
+    ],
+  },
   // {
   //   id: "youtube",
   //   name: "유튜브관리",

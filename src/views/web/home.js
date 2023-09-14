@@ -15,16 +15,31 @@ import Cost from "views/web/section/cost";
 import Consulting from "views/web/section/consulting";
 import Footer from "views/web/section/footer";
 import "styles/common.scss";
-import { showPopupDataAPI } from "api/web";
+import { mainDataAPI, showPopupDataAPI } from "api/web";
 import Popup from "./components/popup";
 
 const Home = () => {
   const [homeData, setHomeData] = useState({
     popup: [],
-    banner: [],
+    topimgList: [],
+    interiorImgList: [],
+    menu_mainList: [],
+    menu_soupList: [],
+    menu_friedList: [],
+    menu_kkochiList: [],
+    menu_sideList: [],
   });
 
-  const { popup, banner } = homeData;
+  const {
+    popup,
+    topimgList,
+    interiorImgList,
+    menu_mainList,
+    menu_soupList,
+    menu_friedList,
+    menu_kkochiList,
+    menu_sideList,
+  } = homeData;
 
   const popupCloseExpired = (idx) => {
     const expiredDate = Number(localStorage.getItem(`popup_${idx}`));
@@ -38,6 +53,7 @@ const Home = () => {
 
   const fetchData = async () => {
     let result = {};
+    // 팝업데이터 불러오기
     const { status: popupStatus, data: popupData } = await showPopupDataAPI();
     if (popupStatus === 200) {
       const { result: popups } = popupData;
@@ -49,6 +65,29 @@ const Home = () => {
       }));
       result = {
         popup: popupResult,
+      };
+    }
+
+    const { status, data } = await mainDataAPI();
+    if (status === 200) {
+      const {
+        topimgList,
+        interiorImgList,
+        menu_mainList,
+        menu_soupList,
+        menu_friedList,
+        menu_kkochiList,
+        menu_sideList,
+      } = data.result;
+      result = {
+        ...result,
+        topimgList,
+        interiorImgList,
+        menu_mainList,
+        menu_soupList,
+        menu_friedList,
+        menu_kkochiList,
+        menu_sideList,
       };
     }
 
@@ -81,11 +120,10 @@ const Home = () => {
           }}
         ></Popup>
       ))}
-
       <Header></Header>
       <main>
         {/* 메인슬라이드 */}
-        <Main></Main>
+        {topimgList.length > 0 && <Main topimgList={topimgList}></Main>}
         {/* 영상 */}
         {/* <section id="video">
           <div className="container">
@@ -103,10 +141,17 @@ const Home = () => {
         {/* 브랜드 */}
         <Brand></Brand>
         {/* 인테리어 */}
-        <Interior></Interior>
+        <Interior interiorImgList={interiorImgList}></Interior>
         <Sorry></Sorry>
         {/* 메뉴 */}
-        <Menu></Menu>
+
+        <Menu
+          mainList={menu_mainList}
+          soupList={menu_soupList}
+          friedList={menu_friedList}
+          kkochiList={menu_kkochiList}
+          sideList={menu_sideList}
+        ></Menu>
         {/* 수익성 */}
         <Revenue></Revenue>
         {/* 매장안내 */}

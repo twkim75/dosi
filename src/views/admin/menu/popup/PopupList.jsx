@@ -9,7 +9,6 @@ import { PopupListTable } from "views/admin/components/table";
 function PopupList() {
   const [list, setList] = useState([]);
   const setLoading = useSetRecoilState(loadingState);
-  console.log("list : ", list);
 
   const changeDisplay = async (row) => {
     setLoading(true);

@@ -34,9 +34,7 @@ function Login() {
       Toast.info("비밀번호를 입력해주세요");
       return document.querySelector("input[name=pwd]").focus();
     }
-    console.log("test");
     const { data, status } = await loginAction({ id: id, pwd: pwd });
-    console.log(data);
     if (status !== 200) {
       return Toast.error("아이디 혹은 비밀번호를 확인해주세요");
     }

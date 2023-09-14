@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
-import dummy1 from "assets/dummy/dummy_1.jpg";
-import dummy2 from "assets/dummy/dummy_2.png";
-import dummy3 from "assets/dummy/dummy_3.jpg";
-import dummy4 from "assets/dummy/dummy_4.jpg";
 import { styled } from "styled-components";
 
-const Main = () => {
+const Main = ({ topimgList }) => {
   const settings = {
     dots: true,
     arrows: false,
@@ -47,10 +43,9 @@ const Main = () => {
     <section id="main" ref={elementRef}>
       <div className="slider__container">
         <Slider {...settings}>
-          <Banner src={dummy2}></Banner>
-          <Banner src={dummy1}></Banner>
-          {/* <Banner src={dummy3}></Banner>
-          <Banner src={dummy4}></Banner> */}
+          {topimgList.map((imgSrc, index) => {
+            return <Banner key={`${index}_banner`} src={imgSrc}></Banner>;
+          })}
         </Slider>
       </div>
     </section>

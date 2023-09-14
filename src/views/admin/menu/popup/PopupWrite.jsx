@@ -39,6 +39,14 @@ function PopupWrite() {
   };
 
   const handleSubmit = useCallback(async () => {
+    const { title, content } = writeData;
+    if (!title || title.length === 0) {
+      Toast.info("제목은 필수 입력값입니다.");
+      return document.querySelector("input[name=title]").focus();
+    }
+    if (!content || content.length === 0) {
+      return Toast.info("내용은 필수 입력값입니다.");
+    }
     setLoading(true);
     const { data, status } = await popupCreateAPI(writeData);
     if (status === 200) {
@@ -50,12 +58,12 @@ function PopupWrite() {
     setLoading(false);
   }, [writeData]);
 
-  const pageTitle = useMemo(() => {
-    return !id ? "팝업 등록하기" : "팝업 수정하기";
-  }, [id]);
+  // const pageTitle = useMemo(() => {
+  //   return !id ? "팝업 등록하기" : "팝업 수정하기";
+  // }, [id]);
   return (
     <ContentContainer>
-      <PageTitle>{pageTitle}</PageTitle>
+      <PageTitle>팝업 등록하기</PageTitle>
       <FormBox>
         <FormBoxItem>
           <FormBoxItemTitle>제목</FormBoxItemTitle>
@@ -116,11 +124,7 @@ function PopupWrite() {
             color={"admin_sub"}
             onClick={handleSubmit}
           >
-            <span>
-              {location.pathname.split("/")[2] === "popup_edit"
-                ? "수정"
-                : "저장"}
-            </span>
+            <span>저장</span>
           </Button>
 
           <Button

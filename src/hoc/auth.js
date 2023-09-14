@@ -12,6 +12,8 @@ function Auth(SpecificComponent, option, adminRoute = null) {
     const location = useLocation();
 
     const accessToken = localStorage.getItem("accessToken");
+    const isLogin = localStorage.getItem("login");
+    // console.log("isLogin : ", isLogin);
 
     useEffect(() => {
       if (option) {

@@ -17,3 +17,11 @@ export const regRequest = ({ name, phone, hopeAddr, addText }) => {
 export const showPopupDataAPI = () => {
   return http.get("/api/notice/display/notice");
 };
+
+/**
+ * 랜딩페이지 메인이미지 조회
+ * @returns
+ */
+export const mainDataAPI = () => {
+  return http.get("/api/main/display/list");
+};

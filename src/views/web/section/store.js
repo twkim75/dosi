@@ -1,7 +1,4 @@
-import dummy1 from "assets/dummy/dummy_1.jpg";
 import dummy2 from "assets/dummy/dummy_2.png";
-import dummy3 from "assets/dummy/dummy_3.jpg";
-import dummy4 from "assets/dummy/dummy_4.jpg";
 import { useEffect, useRef, useState } from "react";
 
 const { kakao } = window;

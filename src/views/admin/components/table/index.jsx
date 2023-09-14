@@ -60,8 +60,6 @@ function PopupListTable({ data = [], changeDisplay }) {
   );
 }
 
-export { PopupListTable };
-
 const DisplayChangeBtn = sc.button`
   margin-left: 10px;
   background-color : var(--color-admin-sub);
@@ -84,6 +82,80 @@ const SubjectWrapper = sc.div`
   //   text-decoration: underline;
   // }
 `;
+
+// 이미지 리스트 테이블
+function ImageListTable({ data = [], changeDisplay }) {
+  return (
+    <StyledTableContainer component={Paper} elevation={0}>
+      <Table>
+        <TableHead>
+          <TableRow height={"58px"}>
+            <StyledTableCell width={"108px"} align="center">
+              번호
+            </StyledTableCell>
+            <StyledTableCell align="center">이미지 타입</StyledTableCell>
+            <StyledTableCell align="center">노출여부</StyledTableCell>
+            <StyledTableCell align="center">이미지 보기</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((row, index) => {
+            const rnum = data.length - index;
+            const types = [
+              "상단 슬라이드",
+              "인테리어",
+              "메뉴 - MAIN",
+              "메뉴 - SOUP",
+              " 메뉴 - FRIED",
+              "메뉴 - STICK",
+              "메뉴 - SIDE",
+            ];
+            const rtype = types[row.type - 1];
+            return (
+              <StyledTableRow key={row.idx}>
+                <StyledTableCell align="center">{rnum}</StyledTableCell>
+                <StyledTableCell align="center">{rtype}</StyledTableCell>
+                <StyledTableCell
+                  align="center"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div>{row.display === "Y" ? "노출" : "미노출"}</div>
+                  <DisplayChangeBtn
+                    onClick={() => {
+                      changeDisplay(row);
+                    }}
+                  >
+                    {row.display === "N" ? "노출" : "미노출"}로 변환
+                  </DisplayChangeBtn>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <ShowImageBtn
+                    onClick={() => {
+                      window.open(row.img);
+                    }}
+                  >
+                    이미지 보기
+                  </ShowImageBtn>
+                </StyledTableCell>
+              </StyledTableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </StyledTableContainer>
+  );
+}
+const ShowImageBtn = sc.button`
+  background-color : #fff;
+  color: var(--color-dark-1);
+  padding: 4px 8px;
+  border: 1px solid var(--color-admin-border);
+`;
+export { PopupListTable, ImageListTable };
 
 const StyledTableContainer = styled(TableContainer)`
   border: 1px solid var(--color-admin-border);

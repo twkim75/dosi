@@ -9,6 +9,8 @@ import Login from "views/admin/Login";
 import AdminHome from "views/admin/menu/Home";
 import AdminPopupWrite from "views/admin/menu/popup/PopupWrite";
 import AdminPopupList from "views/admin/menu/popup/PopupList";
+import AdminImageForm from "views/admin/menu/image/ImageForm";
+import AdminImageList from "views/admin/menu/image/ImageList";
 
 import { StyledToastConatiner } from "views/admin/components/Toast";
 import Auth from "hoc/auth";
@@ -30,6 +32,8 @@ function App() {
   const AuthAdminHomePage = Auth(AdminHome, null);
   const AuthAdminPopupRegPage = Auth(AdminPopupWrite, null);
   const AuthAdminPopupListPage = Auth(AdminPopupList, null);
+  const AuthAdminImageFormPage = Auth(AdminImageForm, null);
+  const AuthAdminImageListPage = Auth(AdminImageList, null);
 
   return (
     <>
@@ -43,7 +47,8 @@ function App() {
           <Route path={"apply_list"} element={<AuthAdminHomePage />} />
           <Route path={"popup_reg"} element={<AuthAdminPopupRegPage />} />
           <Route path={"popup_list"} element={<AuthAdminPopupListPage />} />
-          {/* <Route path={"apply_detail"} element={<AuthAdminApplyDetail />} /> */}
+          <Route path={"image_reg"} element={<AuthAdminImageFormPage />} />
+          <Route path={"image_list"} element={<AuthAdminImageListPage />} />
         </Route>
         {/* <Route path="/ad/home" element={<Login />} /> */}
       </Routes>

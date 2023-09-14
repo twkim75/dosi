@@ -99,37 +99,13 @@ function Nav() {
     const activePath = location.pathname.split("/")[2];
     let openMenu = "";
     switch (activePath) {
-      case "gold_reg":
-      case "gold_list":
-      case "dia_reg":
-      case "pure_gold_reg":
-      case "silver_reg":
-        openMenu = "market";
-        break;
-      case "category_reg":
-      case "category_list":
-      case "product_reg":
-      case "product_list":
-        openMenu = "product";
-        break;
-      case "order_list":
-      case "payment_list":
-        openMenu = "order";
-        break;
-      case "notice_list":
-      case "notice_reg":
-      case "notice_edit":
-      case "notice_detail":
-      case "question_list":
-        openMenu = "cs";
-        break;
       case "popup_list":
       case "popup_reg":
         openMenu = "popup";
         break;
-      case "banner_reg":
-      case "banner_list":
-        openMenu = "banner";
+      case "image_reg":
+      case "image_list":
+        openMenu = "image";
         break;
       default:
         break;

@@ -161,8 +161,6 @@ const Consulting = () => {
             <button
               onClick={() => {
                 reg();
-                // console.log(formData);
-                // console.log(checked);
               }}
             >
               문의하기

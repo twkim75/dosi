@@ -30,10 +30,8 @@ function Editor({ content, setContents }) {
               data: formData,
             })
               .then((res) => {
-                console.log("res : ", res);
                 const { result } = res.data;
                 resolve({
-                  // 수정필요 (이미지 띄우는 url)
                   default: `${result}`,
                 });
               })

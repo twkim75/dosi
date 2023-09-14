@@ -1,13 +1,9 @@
 import Slider from "react-slick";
-import dummy1 from "assets/dummy/dummy_1.jpg";
-import dummy2 from "assets/dummy/dummy_2.png";
-import dummy3 from "assets/dummy/dummy_3.jpg";
-import dummy4 from "assets/dummy/dummy_4.jpg";
 import { styled } from "styled-components";
 
 import { NextArrow, PrevArrow } from "views/web/components/slider";
 import { useEffect, useRef, useState } from "react";
-const Interior = () => {
+const Interior = ({ interiorImgList }) => {
   const elementRef = useRef(null);
   const [scrollActive, setScrollActive] = useState(false);
   const callback = (entries, observer) => {
@@ -49,14 +45,22 @@ const Interior = () => {
         <div className="interior__contents">
           <h1 className="title">INTERIOR</h1>
         </div>
-        <div className="interior__slider_container">
-          <Slider {...settings}>
-            <Banner src={dummy2}></Banner>
-            <Banner src={dummy1}></Banner>
-            {/* <Banner src={dummy3}></Banner>
-            <Banner src={dummy4}></Banner> */}
-          </Slider>
-        </div>
+        {interiorImgList.length > 0 ? (
+          <div className="interior__slider_container">
+            <Slider {...settings}>
+              {interiorImgList.map((imgSrc, index) => {
+                return (
+                  <Banner
+                    key={`${index}_interior_banner`}
+                    src={imgSrc}
+                  ></Banner>
+                );
+              })}
+            </Slider>
+          </div>
+        ) : (
+          <CommingSoon>COMMING SOON.</CommingSoon>
+        )}
       </div>
     </section>
   );
@@ -70,5 +74,23 @@ const Banner = styled.img`
   border-radius: 12px;
   @media all and (max-width: 830px) {
     height: 360px;
+  }
+`;
+
+const CommingSoon = styled.div`
+  line-height: 300px;
+  padding: 20px 0px;
+  font-family: "Outfit";
+  font-weight: 700;
+  color: #fff;
+  font-size: 100px;
+  width: 100%;
+  text-align: center;
+  @media all and (max-width: 900px) {
+    font-size: 64px;
+  }
+  @media all and (max-width: 635px) {
+    line-height: 150px;
+    font-size: 32px;
   }
 `;

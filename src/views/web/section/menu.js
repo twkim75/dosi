@@ -10,7 +10,7 @@ import { styled } from "styled-components";
 import { NextArrow, PrevArrow } from "views/web/components/slider";
 import { useEffect, useRef, useState } from "react";
 
-const Menu = () => {
+const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
   const elementRef = useRef(null);
   const [scrollActive, setScrollActive] = useState(false);
   const callback = (entries, observer) => {
@@ -58,63 +58,113 @@ const Menu = () => {
           {/* <div className="menu__main">
             <div className="menu__item main">
               <h3 className="item__title">MAIN</h3>
-              <div className="slider__container">
-                <Slider {...settings}>
-                  <MainItem src={main1}></MainItem>
-                  <MainItem src={main2}></MainItem>
-                  <MainItem src={main3}></MainItem>
-                  <MainItem src={main4}></MainItem>
-                </Slider>
-              </div>
+              {mainList.length > 0 ? (
+                <div className="slider__container">
+                  <Slider {...settings}>
+                    {mainList.map((imgSrc, index) => {
+                      return (
+                        <MainItem
+                          key={`${index}_main_menu`}
+                          src={imgSrc}
+                        ></MainItem>
+                      );
+                    })}
+                  </Slider>
+                </div>
+              ) : (
+                <MainCommingSoon>
+                  <div>COMMING SOON</div>
+                </MainCommingSoon>
+              )}
             </div>
           </div>
           <div className="menu__sub">
             <div className="menu__row">
               <div className="menu__item soup">
                 <h3 className="item__title">SOUP</h3>
-                <div className="slider__container">
-                  <Slider {...settings}>
-                    <MainItem src={main1}></MainItem>
-                    <MainItem src={main2}></MainItem>
-                    <MainItem src={main3}></MainItem>
-                    <MainItem src={main4}></MainItem>
-                  </Slider>
-                </div>
+                {soupList.length > 0 ? (
+                  <div className="slider__container">
+                    <Slider {...settings}>
+                      {soupList.map((imgSrc, index) => {
+                        return (
+                          <MainItem
+                            key={`${index}_soup_menu`}
+                            src={imgSrc}
+                          ></MainItem>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                ) : (
+                  <SubCommingSoon>
+                    <div>COMMING SOON</div>
+                  </SubCommingSoon>
+                )}
               </div>
               <div className="menu__item fried">
                 <h3 className="item__title">FRIED</h3>
-                <div className="slider__container">
-                  <Slider {...settings}>
-                    <MainItem src={main1}></MainItem>
-                    <MainItem src={main2}></MainItem>
-                    <MainItem src={main3}></MainItem>
-                    <MainItem src={main4}></MainItem>
-                  </Slider>
-                </div>
+                {friedList.length > 0 ? (
+                  <div className="slider__container">
+                    <Slider {...settings}>
+                      {friedList.map((imgSrc, index) => {
+                        return (
+                          <MainItem
+                            key={`${index}_fried_menu`}
+                            src={imgSrc}
+                          ></MainItem>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                ) : (
+                  <SubCommingSoon>
+                    <div>COMMING SOON</div>
+                  </SubCommingSoon>
+                )}
               </div>
             </div>
             <div className="menu__row">
               <div className="menu__item stick">
                 <h3 className="item__title">STICK</h3>
-                <div className="slider__container">
-                  <Slider {...settings}>
-                    <MainItem src={main1}></MainItem>
-                    <MainItem src={main2}></MainItem>
-                    <MainItem src={main3}></MainItem>
-                    <MainItem src={main4}></MainItem>
-                  </Slider>
-                </div>
+                {kkochiList.length > 0 ? (
+                  <div className="slider__container">
+                    <Slider {...settings}>
+                      {kkochiList.map((imgSrc, index) => {
+                        return (
+                          <MainItem
+                            key={`${index}_stick_menu`}
+                            src={imgSrc}
+                          ></MainItem>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                ) : (
+                  <SubCommingSoon>
+                    <div>COMMING SOON</div>
+                  </SubCommingSoon>
+                )}
               </div>
               <div className="menu__item side">
                 <h3 className="item__title">SIDE</h3>
-                <div className="slider__container">
-                  <Slider {...settings}>
-                    <MainItem src={main1}></MainItem>
-                    <MainItem src={main2}></MainItem>
-                    <MainItem src={main3}></MainItem>
-                    <MainItem src={main4}></MainItem>
-                  </Slider>
-                </div>
+                {sideList.length > 0 ? (
+                  <div className="slider__container">
+                    <Slider {...settings}>
+                      {sideList.map((imgSrc, index) => {
+                        return (
+                          <MainItem
+                            key={`${index}_side_menu`}
+                            src={imgSrc}
+                          ></MainItem>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                ) : (
+                  <SubCommingSoon>
+                    <div>COMMING SOON</div>
+                  </SubCommingSoon>
+                )}
               </div>
             </div>
           </div> */}
@@ -183,6 +233,10 @@ const SubCommingSoon = styled.div`
     font-size: 28px;
   }
   @media all and (max-width: 1200px) {
-    height: 230px;
+    height: 300px;
+    > div {
+      line-height: 300px;
+      font-size: 36px;
+    }
   }
 `;
