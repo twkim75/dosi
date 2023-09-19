@@ -1,4 +1,4 @@
-import dummy2 from "assets/dummy/dummy_2.png";
+import brand from "assets/images/main/brand.jpg";
 import dosiLine from "assets/logo_line.png";
 import { useEffect, useRef, useState } from "react";
 
@@ -42,7 +42,7 @@ const Brand = () => {
         </div>
       </div>
       <div className="brand__wrapper container">
-        <img className="brand__img" src={dummy2}></img>
+        <img className="brand__img" src={brand}></img>
         <div className="brand__contents">
           <h1 className="contents__title">도시맥주</h1>
           <p className="contents__introduce">
