@@ -49,6 +49,7 @@ const Cost = () => {
           모든 상권에서 1등 도시맥주!
         </h4>
         <div className="cost__table" ref={tableRef}>
+          <div className="table__caption">[ 25평 기준 ]</div>
           <div className="table__header">
             <div>구분</div>
             <div>가격</div>
@@ -58,23 +59,26 @@ const Cost = () => {
             <div className="__item">
               <div>가맹비</div>
               <div className="price">
-                <span>500</span>
+                <span>700</span>
               </div>
               <div>-</div>
             </div>
             <div className="__item">
               <div>교육비</div>
               <div className="price">
-                <span>500</span>
+                <span>300</span>
               </div>
               <div>-</div>
             </div>
             <div className="__item">
               <div>인테리어</div>
               <div className="price">
-                <span>4,750</span>
+                <span>5,500</span>
               </div>
-              <div>평당 190</div>
+              <div style={{ flexDirection: "column", gap: "2px" }}>
+                <div>40평 이하 평당 220</div>
+                <div>40평 이상 평당 195 </div>
+              </div>
             </div>
             <div className="__item">
               <div>주방그릇 및 기물</div>
@@ -118,7 +122,7 @@ const Cost = () => {
             <div className="__item">
               <div>합계금액</div>
               <div className="price discount">
-                <span>7,850</span>
+                <span>8,600</span>
               </div>
               <div></div>
             </div>

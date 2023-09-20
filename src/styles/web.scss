@@ -748,6 +748,14 @@ section {
         opacity: 1;
         transform: translateX(0px);
       }
+      .table__caption {
+        font-size: 14px;
+        line-height: 1.4;
+        color: #8c8c8c;
+        text-align: end;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
       .table__header {
         display: flex;
         background-color: var(--color-primary-dark);
