@@ -104,10 +104,10 @@ function ImageListTable({ data = [], changeDisplay }) {
             const types = [
               "상단 슬라이드",
               "인테리어",
-              "메뉴 - MAIN",
+              "메뉴 - MAIN(왼쪽)",
               "메뉴 - SOUP",
               " 메뉴 - FRIED",
-              "메뉴 - STICK",
+              "메뉴 - MAIN(오른쪽)",
               "메뉴 - SIDE",
             ];
             const rtype = types[row.type - 1];

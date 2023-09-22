@@ -54,10 +54,9 @@ const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
           <h4 className="subtitle">도시맥주만의 최상의 퀄리티의 음식입니다.</h4>
         </div>
         <div className="menu__wrapper">
-          <CommingSoon>COMMING SOON.</CommingSoon>
-          {/* <div className="menu__main">
+          <div className="menu__main">
             <div className="menu__item main">
-              <h3 className="item__title">MAIN</h3>
+              {/* <h3 className="item__title"></h3> */}
               {mainList.length > 0 ? (
                 <div className="slider__container">
                   <Slider {...settings}>
@@ -80,15 +79,16 @@ const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
           </div>
           <div className="menu__sub">
             <div className="menu__row">
-              <div className="menu__item soup">
-                <h3 className="item__title">SOUP</h3>
-                {soupList.length > 0 ? (
+              
+            <div className="menu__item stick">
+                <h3 className="item__title">MAIN</h3>
+                {kkochiList.length > 0 ? (
                   <div className="slider__container">
                     <Slider {...settings}>
-                      {soupList.map((imgSrc, index) => {
+                      {kkochiList.map((imgSrc, index) => {
                         return (
                           <MainItem
-                            key={`${index}_soup_menu`}
+                            key={`${index}_stick_menu`}
                             src={imgSrc}
                           ></MainItem>
                         );
@@ -101,6 +101,8 @@ const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
                   </SubCommingSoon>
                 )}
               </div>
+
+
               <div className="menu__item fried">
                 <h3 className="item__title">FRIED</h3>
                 {friedList.length > 0 ? (
@@ -124,15 +126,16 @@ const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
               </div>
             </div>
             <div className="menu__row">
-              <div className="menu__item stick">
-                <h3 className="item__title">STICK</h3>
-                {kkochiList.length > 0 ? (
+
+            <div className="menu__item soup">
+                <h3 className="item__title">SOUP</h3>
+                {soupList.length > 0 ? (
                   <div className="slider__container">
                     <Slider {...settings}>
-                      {kkochiList.map((imgSrc, index) => {
+                      {soupList.map((imgSrc, index) => {
                         return (
                           <MainItem
-                            key={`${index}_stick_menu`}
+                            key={`${index}_soup_menu`}
                             src={imgSrc}
                           ></MainItem>
                         );
@@ -145,6 +148,9 @@ const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
                   </SubCommingSoon>
                 )}
               </div>
+
+
+              
               <div className="menu__item side">
                 <h3 className="item__title">SIDE</h3>
                 {sideList.length > 0 ? (
@@ -167,7 +173,7 @@ const Menu = ({ mainList, soupList, friedList, kkochiList, sideList }) => {
                 )}
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>

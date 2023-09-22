@@ -188,7 +188,10 @@ function ImageForm() {
                 인테리어
               </Radio>
               <Radio name="type" value="3">
-                메뉴 - MAIN
+                메뉴 - MAIN(왼쪽)
+              </Radio>
+              <Radio name="type" value="6">
+                메뉴 - MAIN(오른쪽)
               </Radio>
               <Radio name="type" value="4">
                 메뉴 - SOUP
@@ -196,9 +199,7 @@ function ImageForm() {
               <Radio name="type" value="5">
                 메뉴 - FRIED
               </Radio>
-              <Radio name="type" value="6">
-                메뉴 - STICK
-              </Radio>
+              
               <Radio name="type" value="7">
                 메뉴 - SIDE
               </Radio>
