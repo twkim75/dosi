@@ -125,19 +125,19 @@ const Home = () => {
         {/* 메인슬라이드 */}
         {topimgList.length > 0 && <Main topimgList={topimgList}></Main>}
         {/* 영상 */}
-        {/* <section id="video">
+        <section id="video">
           <div className="container">
             <iframe
               width="100%"
               height="600px"
-              src="https://www.youtube.com/embed/t7bS3PHRAGw?si=eMaFzJ0KO2U88vIp"
+              src="https://www.youtube.com/embed/G-zGp9Df-r8?si=M-L78arMl-4JplTN"
               title="YouTube video player"
-              frameBorder="0"
+              frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
+              allowfullscreen
             ></iframe>
           </div>
-        </section> */}
+        </section>
         {/* 브랜드 */}
         <Brand></Brand>
         {/* 인테리어 */}
