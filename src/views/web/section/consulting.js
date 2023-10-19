@@ -159,6 +159,8 @@ const Consulting = () => {
               <span>위의 ‘개인정보의 제공 및 활용 동의서’ 에 동의합니다.</span>
             </Checkbox>
             <button
+              id="apply"
+              className="apply_btn"
               onClick={() => {
                 reg();
               }}
