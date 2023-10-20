@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer__wrapper">
           <p>
-            (주)어세이블 Us Able Co., Ltd.<span>|</span>대표 :정현우
+            (주)어세이블 Us Able Co., Ltd.
             <span>|</span>
             사업자번호 : 683-87-02779
           </p>
